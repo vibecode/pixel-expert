@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
 import Intro from './components/Intro';
+import './styles/app.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Intro />
-      </div>
+        <main className="central">
+          <div className="central__content">
+            <Intro />
+          </div>
+        </main>
     );
   }
 }

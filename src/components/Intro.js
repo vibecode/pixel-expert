@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import autobind from 'autobind-decorator';
+import '../styles/intro.css';
 
 class Intro extends Component {
-  @autobind
-  handleAsteriskClick() {
+  handleAsteriskClick = () => {
     console.log('clicked');
-  }
+  };
 
   render() {
     return (
@@ -15,7 +14,7 @@ class Intro extends Component {
               onClick={this.handleAsteriskClick}>*</h1>
           <p className="intro__motto">
             <sup>*</sup>
-            {this.props.motto}
+            'Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.'
           </p>
         </div>
     )
