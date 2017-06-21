@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import '../styles/intro.css';
 import { MOTTO } from '../constants/strings';
+import { Link } from 'react-router-dom';
 
 class Intro extends Component {
-  handleAsteriskClick = () => {
-    console.log('clicked');
-  };
-
   render() {
     return (
         <div id="intro" className="intro">
-          <h1
-              className="intro__asterisk"
-              onClick={this.handleAsteriskClick}>*</h1>
+          <Link className="intro__asterisk" to="/greeting">*</Link>
           <p className="intro__motto">
             <sup>*</sup>
             {MOTTO}

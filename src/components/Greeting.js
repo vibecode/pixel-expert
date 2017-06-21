@@ -3,6 +3,7 @@ import * as strings from '../constants/strings';
 import '../styles/greeting.css';
 import logo from '../img/logo_big.png';
 import arrow from '../img/arrow_right.svg';
+import { Link } from 'react-router-dom';
 
 class Greeting extends Component {
 
@@ -20,9 +21,9 @@ class Greeting extends Component {
             </p>
           </div>
           <div className="greeting__continue">
-            <span>
+            <Link to="/rules">
               <img src={arrow} width="64" height="64" alt="Next" />
-            </span>
+            </Link>
           </div>
         </div>
     );

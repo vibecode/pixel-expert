@@ -10,11 +10,16 @@
 }
 
 .intro__asterisk {
+  display: block;
   text-align: center;
 
   font-size: 172px;
+  line-height: 172px;
   color: $main-red-color;
   cursor: pointer;
+  text-decoration: none;
+
+  margin: 0;
 
   position: relative;
   top: 220px;
