@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/intro.css';
+import { MOTTO } from '../constants/strings';
 
 class Intro extends Component {
   handleAsteriskClick = () => {
@@ -14,7 +15,7 @@ class Intro extends Component {
               onClick={this.handleAsteriskClick}>*</h1>
           <p className="intro__motto">
             <sup>*</sup>
-            'Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.'
+            {MOTTO}
           </p>
         </div>
     )
