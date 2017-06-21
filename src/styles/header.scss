@@ -1,3 +1,5 @@
+@import "fonts.scss";
+
 .header {
   height: 100px;
 }
@@ -9,4 +11,20 @@
   top: 0;
 
   padding-top: 20px;
+}
+
+.header__timer {
+  @include bold-text;
+  font-size: 60px;
+  position: absolute;
+  margin-top: 0;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header__lives {
+  position: absolute;
+  top: 20px;
+  right: 0;
 }
