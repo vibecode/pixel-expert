@@ -3,7 +3,7 @@ import Header from './Header';
 import Stats from './Stats';
 import '../styles/game.css';
 
-class GameOne extends Component {
+class GameDouble extends Component {
   render() {
     return (
         <div>
@@ -43,4 +43,4 @@ class GameOne extends Component {
   }
 }
 
-export default GameOne;
+export default GameDouble;
