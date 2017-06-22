@@ -55,7 +55,7 @@ class Header extends Component {
           </div>
           <h1 className="header__timer">{this.props.timeLeft}</h1>
           <div className="header__lives">
-            {this.renderLives(3, 2)}
+            {this.renderLives(this.props.livesTotal, this.props.livesLeft)}
           </div>
         </header>
     );

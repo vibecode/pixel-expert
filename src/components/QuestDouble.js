@@ -3,7 +3,7 @@ import Header from './Header';
 import Stats from './Stats';
 import '../styles/game.css';
 
-class GameDouble extends Component {
+class QuestDouble extends Component {
   render() {
     return (
         <div>
@@ -43,4 +43,4 @@ class GameDouble extends Component {
   }
 }
 
-export default GameDouble;
+export default QuestDouble;

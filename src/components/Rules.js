@@ -22,7 +22,7 @@ class Rules extends Component {
     e.preventDefault();
 
     //TODO: screenType @param  here should depends on fetched data;
-    this.props.changeScreen(screenTypes.GAME_SOLO);
+    this.props.changeScreen(screenTypes.QUEST_SOLO);
   };
 
   onInputChange = (e) => {

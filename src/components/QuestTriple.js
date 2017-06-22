@@ -3,7 +3,7 @@ import '../styles/game.css';
 import Header from './Header';
 import Stats from './Stats';
 
-class GameTriple extends Component {
+class QuestTriple extends Component {
 
   render() {
     return (
@@ -31,4 +31,4 @@ class GameTriple extends Component {
   }
 }
 
-export default GameTriple;
+export default QuestTriple;

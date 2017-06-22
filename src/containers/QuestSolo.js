@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import * as GameActions from '../actions/game';
 import { changeScreen } from '../actions/route';
-import GameSolo from '../components/GameSolo';
+import QuestSolo from '../components/QuestSolo';
 
 const mapStateToProps = state => state.game;
 
@@ -11,7 +11,10 @@ const mapDispatchToProps = dispatch => ({
   },
   changeScreen(screenType) {
     dispatch(changeScreen(screenType));
+  },
+  onAnswer(answer) {
+
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameSolo);
+export default connect(mapStateToProps, mapDispatchToProps)(QuestSolo);
