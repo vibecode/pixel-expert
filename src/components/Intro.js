@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import '../styles/intro.css';
 import { MOTTO } from '../constants/strings';
-import { Link } from 'react-router-dom';
+import { GREETING } from '../constants/screenTypes';
 
 class Intro extends Component {
+  handleOnClick = () => {
+    this.props.changeScreen(GREETING);
+  };
+
   render() {
     return (
         <div id="intro" className="intro">
-          <Link className="intro__asterisk" to="/greeting">*</Link>
+          <h1 className="intro__asterisk" onClick={this.handleOnClick}>*</h1>
           <p className="intro__motto">
             <sup>*</sup>
             {MOTTO}

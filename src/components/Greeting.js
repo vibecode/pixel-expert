@@ -3,9 +3,13 @@ import * as strings from '../constants/strings';
 import '../styles/greeting.css';
 import logo from '../img/logo_big.png';
 import arrow from '../img/arrow_right.svg';
-import { Link } from 'react-router-dom';
+import { RULES } from '../constants/screenTypes';
+import v4 from 'uuid/v4';
 
 class Greeting extends Component {
+  handleNextClick = () => {
+    this.props.changeScreen(RULES);
+  };
 
   render() {
     return (
@@ -16,14 +20,12 @@ class Greeting extends Component {
           <h1 className="greeting__asterisk">*</h1>
           <div className="greeting__challenge">
             <h3 className="greeting__title">{strings.GREETING_TITLE}</h3>
-            <p>
-              {strings.GREETING_RULES.split('\n').map(line => <p className="greeting__new-line">{line}</p>)}
-            </p>
+            <div>
+              {strings.GREETING_RULES.split('\n').map(line => <p key={v4()} className="greeting__new-line">{line}</p>)}
+            </div>
           </div>
-          <div className="greeting__continue">
-            <Link to="/rules">
+          <div className="greeting__continue" onClick={this.handleNextClick}>
               <img src={arrow} width="64" height="64" alt="Next" />
-            </Link>
           </div>
         </div>
     );

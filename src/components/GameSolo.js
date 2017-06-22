@@ -4,10 +4,18 @@ import Header from './Header';
 import Stats from './Stats';
 
 class GameSolo extends Component {
+  handleUpdateTime = (timeLeft) => {
+    this.props.updateTime(timeLeft);
+  };
+
   render() {
     return (
         <div>
-          <Header />
+          <Header
+              updateTime={this.handleUpdateTime}
+              timeTotal={this.props.timeTotal}
+              timeLeft={this.props.timeLeft}
+              changeScreen={this.props.changeScreen} />
           
           <div className="game">
             <p className="game__task">Угадай, фото или рисунок?</p>
@@ -26,7 +34,7 @@ class GameSolo extends Component {
             </form>
           </div>
           
-          <Stats stats={['fast', 'fast']}/>
+          <Stats stats={this.props.stats}/>
         </div>
     );
   }

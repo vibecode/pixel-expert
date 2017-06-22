@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/rules.css';
 import { RULES } from '../constants/strings';
+import * as screenTypes from '../constants/screenTypes';
 import arrowLeft from '../img/arrow_left.svg';
 import logoSmall from '../img/logo_small.png';
 
@@ -20,7 +20,9 @@ class Rules extends Component {
 
   handleGoClick = (e) => {
     e.preventDefault();
-    this.props.history.push(`/gamesolo`);
+
+    //TODO: screenType @param  here should depends on fetched data;
+    this.props.changeScreen(screenTypes.GAME_SOLO);
   };
 
   onInputChange = (e) => {
@@ -29,15 +31,19 @@ class Rules extends Component {
     })
   };
 
+  handleBackClick = () => {
+    this.props.changeScreen(screenTypes.GREETING);
+  };
+
   render() {
     return (
         <div>
           <header className="header">
-            <div className="header__back">
-              <Link to="/greeting" className="back">
+            <div className="header__back" onClick={this.handleBackClick}>
+              <div className="back">
                 <img src={arrowLeft} width="45" height="45" alt="Back" />
-                <img src={logoSmall} width="101" height="44" />
-              </Link>
+                <img src={logoSmall} width="101" height="44" alt="PixelHunter"/>
+              </div>
             </div>
           </header>
           <div className="rules">
