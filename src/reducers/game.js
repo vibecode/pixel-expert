@@ -7,9 +7,7 @@ const INITIAL_STATE = {
   timeLeft: 30,
   livesTotal: 3,
   livesLeft: 3,
-  fastAnswerTime: 10,
-  slowAnswerTime: 20,
-  correctAnswerPoints: 100,
+  totalPoints: 0,
   stats: [
     'unknown',
     'unknown',
@@ -47,6 +45,44 @@ export default (state = INITIAL_STATE, action) => {
           return result;
         })
       };
+      //TODO: MOVE POINTS CONSTANTS TO CONFIG;
+    case actionTypes.SET_CORRECT_ANSWER:
+      const timePassed = state.timeTotal - state.timeLeft;
+
+      if (timePassed < 10) {
+        return {
+          ...state,
+          totalPoints: state.totalPoints + 150,
+          stats: state.stats.map((result, idx) => {
+            if (idx === state.currentQuest) {
+              return ResultType.FAST
+            }
+            return result;
+          })
+        }
+      } else if (timePassed > 20) {
+        return {
+          ...state,
+          totalPoints: state.totalPoints + 50,
+          stats: state.stats.map((result, idx) => {
+            if (idx === state.currentQuest) {
+              return ResultType.SLOW
+            }
+            return result;
+          })
+        }
+      } else {
+        return {
+          ...state,
+          totalPoints: state.totalPoints + 100,
+          stats: state.stats.map((result, idx) => {
+            if (idx === state.currentQuest) {
+              return ResultType.CORRECT
+            }
+            return result;
+          })
+        }
+      }
     default:
       return state;
   }

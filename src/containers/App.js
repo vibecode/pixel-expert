@@ -28,9 +28,9 @@ const mapDispatchToProps = dispatch => {
     },
     onAnswer(isCorrect, currentQuest, quests) {
       if (isCorrect) {
-        console.log(isCorrect);
+        dispatch(GameActions.setCorrectAnswer());
       } else {
-        dispatch(GameActions.setWrongAnswer())
+        dispatch(GameActions.setWrongAnswer());
       }
       dispatch(GameActions.nextQuest());
       dispatch(changeScreen(getScreenType(quests[currentQuest + 1])));
@@ -38,4 +38,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect((state) => ({ state }), mapDispatchToProps)(App);
+export default connect(state => ({ state }), mapDispatchToProps)(App);
