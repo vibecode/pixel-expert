@@ -4,54 +4,28 @@ import Stats from './Stats';
 import '../styles/game.css';
 
 class QuestSolo extends Component {
-  constructor(props) {
-    super(props);
-    this.timer = null;
-  }
-
   componentDidMount() {
-    this.startGame();
+    this.props.startGame();
   }
 
   componentWillUnmount() {
-    this.initTimer();
+    this.props.initTimer();
   }
 
   //this needed because component won't remount to the DOM
-  // if a previous screen type is the same as a next screen type
+  //if a previous screen type is the same as a next screen type
   componentWillReceiveProps(nextProps) {
     const nextQuest = nextProps.state.game.currentQuest;
     const { currentQuest } = this.props.state.game;
 
     if (nextQuest > currentQuest) {
-      this.initTimer();
-      this.startGame();
+      this.props.initTimer();
+      this.props.startGame();
     }
   }
 
-  initTimer() {
-    const { timeTotal } = this.props.state.game;
-
-    clearInterval(this.timer);
-    this.props.updateTime(timeTotal);
-  }
-
-  startGame() {
-    const { currentQuest } = this.props.state.game;
-    const { quests } = this.props.state;
-
-    this.timer = setInterval(() => {
-      const { timeLeft } = this.props.state.game;
-      if (timeLeft) {
-        this.props.updateTime(timeLeft - 1);
-      } else {
-        this.props.onAnswer(false, currentQuest, quests);
-      }
-    }, 1000);
-  };
-
   handleAnswerClick = (e) => {
-    clearInterval(this.timer);
+    clearInterval(this.props.timer);
 
     const { currentQuest } = this.props.state.game;
     const { quests } = this.props.state;
