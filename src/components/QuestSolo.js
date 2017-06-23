@@ -37,7 +37,10 @@ class QuestSolo extends Component {
   };
 
   render() {
-    const { livesLeft, livesTotal, timeTotal, timeLeft, stats } = this.props.state.game;
+    const { livesLeft, livesTotal, timeTotal, timeLeft, stats, currentQuest } = this.props.state.game;
+    const { quests } = this.props.state;
+    const { task } = quests[currentQuest];
+    const { url, width, height } = quests[currentQuest].answers[0].image;
 
     return (
         <div>
@@ -49,10 +52,10 @@ class QuestSolo extends Component {
               changeScreen={this.props.changeScreen} />
 
           <div className="game">
-            <p className="game__task">Угадай, фото или рисунок?</p>
+            <p className="game__task">{task}</p>
             <form className="game__content  game__content--wide">
               <div className="game__option">
-                <img src="http://placehold.it/705x455" alt="Option 1" width="705" height="455" />
+                <img src={url} alt="Option 1" width={width} height={height} />
                 <label className="game__answer  game__answer--photo">
                   <input
                       name="question1"
