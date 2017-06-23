@@ -1,27 +1,68 @@
 import React, { Component } from 'react';
-import '../styles/game.css';
 import Header from './Header';
 import Stats from './Stats';
+import '../styles/game.css';
 
 class QuestSolo extends Component {
-  handleUpdateTime = (timeLeft) => {
-    this.props.updateTime(timeLeft);
+  constructor(props) {
+    super(props);
+    this.timer = null;
+  }
+
+  componentDidMount() {
+    this.updateTime();
+  }
+
+  componentWillUnmount() {
+    this.initTimer();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const nextQuest = nextProps.state.game.currentQuest;
+    const { currentQuest } = this.props.state.game;
+
+    if (nextQuest > currentQuest) {
+      this.initTimer();
+      this.updateTime();
+    }
+  }
+
+  initTimer() {
+    const { timeTotal } = this.props.state.game;
+
+    clearInterval(this.timer);
+    this.props.updateTime(timeTotal);
+  }
+
+  updateTime() {
+    this.timer = setInterval(() => {
+      const { timeLeft } = this.props.state.game;
+      this.props.updateTime(timeLeft - 1);
+    }, 1000);
   };
 
   onAnswer = (e) => {
-    console.log(e.target.value);
-    this.props.onAnswer(e.target.value);
+    clearInterval(this.timer);
+
+    const { currentQuest } = this.props.state.game;
+    const { quests } = this.props.state;
+
+    const answer = e.target.value;
+    const isCorrect = answer === quests[currentQuest].answers[0].type;
+
+    this.props.onAnswer(isCorrect, currentQuest, quests);
   };
 
   render() {
+    const { livesLeft, livesTotal, timeTotal, timeLeft, stats } = this.props.state.game;
+
     return (
         <div>
           <Header
-              updateTime={this.handleUpdateTime}
-              livesLeft={this.props.livesLeft}
-              livesTotal={this.props.livesTotal}
-              timeTotal={this.props.timeTotal}
-              timeLeft={this.props.timeLeft}
+              livesLeft={livesLeft}
+              livesTotal={livesTotal}
+              timeTotal={timeTotal}
+              timeLeft={timeLeft}
               changeScreen={this.props.changeScreen} />
 
           <div className="game">
@@ -49,7 +90,7 @@ class QuestSolo extends Component {
             </form>
           </div>
 
-          <Stats stats={this.props.stats} />
+          <Stats stats={stats} />
         </div>
     );
   }

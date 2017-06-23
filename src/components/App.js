@@ -4,7 +4,8 @@ import '../styles/app.css';
 import Greeting from './Greeting';
 import Intro from './Intro';
 import Rules from './Rules';
-import QuestSolo from '../containers/QuestSolo';
+import QuestSolo from './QuestSolo';
+import QuestTriple from './QuestTriple';
 
 class App extends Component {
   renderScreen(screenType) {
@@ -16,7 +17,11 @@ class App extends Component {
       case screenTypes.RULES:
         return <Rules changeScreen={this.props.changeScreen}/>;
       case screenTypes.QUEST_SOLO:
-        return <QuestSolo />;
+        return <QuestSolo {...this.props} />;
+      case screenTypes.QUEST_TRIPLE:
+        return <QuestTriple {...this.props} />;
+      case screenTypes.QUEST_DOUBLE:
+
       default:
         throw new Error(`Unknown screenType: ${screenType}`);
     }
@@ -27,7 +32,7 @@ class App extends Component {
         <main className="central">
           <div className="central__content">
               <div>
-                {this.renderScreen(this.props.route)}
+                {this.renderScreen(this.props.state.routes.path)}
               </div>
           </div>
         </main>

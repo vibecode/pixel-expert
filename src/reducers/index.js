@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import game from './game';
-import route from './route';
+import routes from './routes';
+import quests from './quests';
 
-export default combineReducers({ game, route });
+export default combineReducers({ routes, game, quests });

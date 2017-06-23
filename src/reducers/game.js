@@ -1,7 +1,8 @@
 import * as actionTypes from '../constants/actionTypes';
+import { ResultType } from '../constants/questTypes';
 
 const INITIAL_STATE = {
-  currentQuestion: 0,
+  currentQuest: 0,
   timeTotal: 30,
   timeLeft: 30,
   livesTotal: 3,
@@ -20,74 +21,6 @@ const INITIAL_STATE = {
     'unknown',
     'unknown',
     'unknown'
-  ],
-  questions: [
-    {
-      'type': 'two-of-two',
-      'question': 'Угадайте для каждого изображения фото или рисунок?',
-      'answers': [
-        {
-          'image': {
-            'url': 'http://placehold.it/468x458',
-            'width': 468,
-            'height': 458
-          },
-          'type': 'photo'
-        },
-        {
-          'image': {
-            'url': 'http://placehold.it/468x458',
-            'width': 468,
-            'height': 458
-          },
-          'type': 'painting'
-        }
-      ]
-    },
-    {
-      'type': 'tinder-like',
-      'question': 'Угадай, фото или рисунок?',
-      'answers': [
-        {
-          'image': {
-            'url': 'http://placehold.it/705x455',
-            'width': 705,
-            'height': 455
-          },
-          'type': 'photo'
-        }
-      ]
-    },
-    {
-      'type': 'one-of-three',
-      'question': 'Найдите рисунок среди изображений',
-      'answers': [
-        {
-          'image': {
-            'url': 'http://placehold.it/304x455',
-            'width': 304,
-            'height': 455
-          },
-          'type': 'photo'
-        },
-        {
-          'image': {
-            'url': 'http://placehold.it/304x455',
-            'width': 304,
-            'height': 455
-          },
-          'type': 'painting'
-        },
-        {
-          'image': {
-            'url': 'http://placehold.it/304x455',
-            'width': 304,
-            'height': 455
-          },
-          'type': 'photo'
-        }
-      ]
-    }
   ]
 };
 
@@ -97,6 +30,22 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         timeLeft: action.payload
+      };
+    case actionTypes.NEXT_QUEST:
+      return {
+        ...state,
+        currentQuest: state.currentQuest + 1
+      };
+    case actionTypes.SET_WRONG_ANSWER:
+      return {
+        ...state,
+        livesLeft: state.livesLeft - 1,
+        stats: state.stats.map((result, idx) => {
+          if (idx === state.currentQuest) {
+            return ResultType.WRONG
+          }
+          return result;
+        })
       };
     default:
       return state;

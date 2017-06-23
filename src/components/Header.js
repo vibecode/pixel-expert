@@ -8,27 +8,6 @@ import heartEmpty from '../img/heart__empty.svg';
 import v4 from 'uuid/v4';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.countDown = null;
-  }
-
-  componentDidMount() {
-    this.renderTime();
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.countDown);
-    this.props.updateTime(this.props.timeTotal);
-  }
-
-  renderTime() {
-    this.countDown = setInterval(() => {
-      const timeLeft = this.props.timeLeft - 1;
-      this.props.updateTime(timeLeft);
-    }, 1000);
-  };
-
   renderLives(livesTotal, livesLeft) {
     const lives = new Array(livesTotal - livesLeft);
     lives.fill(<img src={heartEmpty} alt="EmptyLife" width="32" height="32" key={v4()}/>);
