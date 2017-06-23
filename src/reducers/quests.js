@@ -36,6 +36,28 @@ const INITIAL_STATE =  [
     ]
   },
   {
+    'type': 'two-of-two',
+    'task': 'Угадайте для каждого изображения фото или рисунок?',
+    'answers': [
+      {
+        'image': {
+          'url': 'http://placehold.it/468x458',
+          'width': 468,
+          'height': 458
+        },
+        'type': 'photo'
+      },
+      {
+        'image': {
+          'url': 'http://placehold.it/468x458',
+          'width': 468,
+          'height': 458
+        },
+        'type': 'painting'
+      }
+    ]
+  },
+  {
     'type': 'one-of-three',
     'task': 'Найдите рисунок среди изображений',
     'answers': [

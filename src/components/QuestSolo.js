@@ -12,7 +12,7 @@ class QuestSolo extends Component {
     this.props.initTimer();
   }
 
-  //this needed because component won't remount to the DOM
+  //This is necessary because component won't remount
   //if a previous screen type is the same as a next screen type
   componentWillReceiveProps(nextProps) {
     const nextQuest = nextProps.state.game.currentQuest;

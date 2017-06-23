@@ -1,36 +1,51 @@
 import React, { Component } from 'react';
 import * as screenTypes from '../constants/screenTypes';
 import '../styles/app.css';
-import Greeting from './Greeting';
 import Intro from './Intro';
+import Greeting from './Greeting';
 import Rules from './Rules';
 import QuestSolo from './QuestSolo';
-import QuestTriple from './QuestTriple';
 import QuestDouble from './QuestDouble';
+import QuestTriple from './QuestTriple';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.timer = null;
   }
+
   renderScreen(screenType) {
     switch (screenType) {
       case screenTypes.INTRO:
-        return <Intro changeScreen={this.props.changeScreen}/>;
+        return <Intro changeScreen={this.props.changeScreen} />;
       case screenTypes.GREETING:
-        return <Greeting changeScreen={this.props.changeScreen}/>;
+        return <Greeting changeScreen={this.props.changeScreen} />;
       case screenTypes.RULES:
-        return <Rules changeScreen={this.props.changeScreen}/>;
+        return <Rules changeScreen={this.props.changeScreen} />;
       case screenTypes.QUEST_SOLO:
-        return <QuestSolo
-            {...this.props}
-            initTimer={this.initTimer}
-            startGame={this.startGame}
-            timer={this.timer} />;
+        return (
+            <QuestSolo
+                {...this.props}
+                initTimer={this.initTimer}
+                startGame={this.startGame}
+                timer={this.timer} />
+        );
       case screenTypes.QUEST_DOUBLE:
-        return <QuestDouble {...this.props} />;
+        return (
+            <QuestDouble
+                {...this.props}
+                initTimer={this.initTimer}
+                startGame={this.startGame}
+                timer={this.timer} />
+        );
       case screenTypes.QUEST_TRIPLE:
-        return <QuestTriple {...this.props} />;
+        return (
+            <QuestTriple
+                {...this.props}
+                initTimer={this.initTimer}
+                startGame={this.startGame}
+                timer={this.timer} />
+        );
       default:
         throw new Error(`Unknown screenType: ${screenType}`);
     }
@@ -61,9 +76,9 @@ class App extends Component {
     return (
         <main className="central">
           <div className="central__content">
-              <div>
-                {this.renderScreen(this.props.state.routes.path)}
-              </div>
+            <div>
+              {this.renderScreen(this.props.state.routes.path)}
+            </div>
           </div>
         </main>
     );
