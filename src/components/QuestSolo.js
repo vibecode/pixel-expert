@@ -10,20 +10,22 @@ class QuestSolo extends Component {
   }
 
   componentDidMount() {
-    this.updateTime();
+    this.startGame();
   }
 
   componentWillUnmount() {
     this.initTimer();
   }
 
+  //this needed because component won't remount to the DOM
+  // if a previous screen type is the same as a next screen type
   componentWillReceiveProps(nextProps) {
     const nextQuest = nextProps.state.game.currentQuest;
     const { currentQuest } = this.props.state.game;
 
     if (nextQuest > currentQuest) {
       this.initTimer();
-      this.updateTime();
+      this.startGame();
     }
   }
 
@@ -34,14 +36,21 @@ class QuestSolo extends Component {
     this.props.updateTime(timeTotal);
   }
 
-  updateTime() {
+  startGame() {
+    const { currentQuest } = this.props.state.game;
+    const { quests } = this.props.state;
+
     this.timer = setInterval(() => {
       const { timeLeft } = this.props.state.game;
-      this.props.updateTime(timeLeft - 1);
+      if (timeLeft) {
+        this.props.updateTime(timeLeft - 1);
+      } else {
+        this.props.onAnswer(false, currentQuest, quests);
+      }
     }, 1000);
   };
 
-  onAnswer = (e) => {
+  handleAnswerClick = (e) => {
     clearInterval(this.timer);
 
     const { currentQuest } = this.props.state.game;
@@ -75,7 +84,7 @@ class QuestSolo extends Component {
                       name="question1"
                       type="radio"
                       value="photo"
-                      onClick={this.onAnswer} />
+                      onClick={this.handleAnswerClick} />
                   <span>Фото</span>
                 </label>
                 <label className="game__answer  game__answer--wide  game__answer--paint">
@@ -83,7 +92,7 @@ class QuestSolo extends Component {
                       name="question1"
                       type="radio"
                       value="paint"
-                      onClick={this.onAnswer} />
+                      onClick={this.handleAnswerClick} />
                   <span>Рисунок</span>
                 </label>
               </div>

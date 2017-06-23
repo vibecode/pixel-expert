@@ -25,6 +25,14 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.UPDATE_TIME:
+      if (action.payload < 0) {
+        throw new RangeError(`Time can't be negative`);
+      }
+
+      if (action.payload > state.timeTotal) {
+        throw new RangeError(`Time can't be more than ${state.timeTotal}`);
+      }
+
       return {
         ...state,
         timeLeft: action.payload
@@ -35,9 +43,19 @@ export default (state = INITIAL_STATE, action) => {
         currentQuest: state.currentQuest + 1
       };
     case actionTypes.SET_WRONG_ANSWER:
+      const livesLeft = state.livesLeft - 1;
+
+      if (livesLeft < 0) {
+        throw new RangeError(`Number of lives can't be negative`);
+      }
+
+      if (livesLeft > state.livesTotal) {
+        throw new RangeError(`Number of lives can't be more than ${state.livesTotal}`);
+      }
+
       return {
         ...state,
-        livesLeft: state.livesLeft - 1,
+        livesLeft,
         stats: state.stats.map((result, idx) => {
           if (idx === state.currentQuest) {
             return ResultType.WRONG
