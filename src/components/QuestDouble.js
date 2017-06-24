@@ -17,14 +17,11 @@ class QuestDouble extends Component {
 
   constructor(props) {
     super(props);
-    this.answers = new Map();
 
     this.state = {
       question1: '',
       question2: ''
     };
-
-    this.userAnswers = new Map;
   }
 
   componentDidMount() {
@@ -35,8 +32,8 @@ class QuestDouble extends Component {
     this.props.initTimer();
   }
 
-  //This is necessary because component won't remount
-  //if a previous screen type is the same as a next screen type
+  //This is necessary because the component won't remount
+  //if a previous screen is the same type as a next screen
   componentWillReceiveProps(nextProps) {
     const nextQuest = nextProps.state.game.currentQuest;
     const { currentQuest } = this.props.state.game;
@@ -87,9 +84,9 @@ class QuestDouble extends Component {
           <div className="game">
             <p className="game__task">{task}</p>
             <form className="game__content">
-              {answers.map(({image}, i) => {
+              {answers.map(({ image }, i) => {
                 return (
-                    <div className="game__option" key={i}>
+                    <div className="game__option" key={v4()}>
                       <img src={image.url} alt={`Option ${i + 1}`} width={image.width} height={image.height} />
                       <label className="game__answer game__answer--photo">
                         <input
@@ -105,7 +102,7 @@ class QuestDouble extends Component {
                             onChange={this.handleAnswerClick}
                             name={`question${i + 1}`}
                             type="radio"
-                            value="paint"
+                            value="painting"
                             checked={this.state[`question${i + 1}`] === "paint"} />
                         <span>Рисунок</span>
                       </label>

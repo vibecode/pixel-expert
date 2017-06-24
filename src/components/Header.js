@@ -9,11 +9,15 @@ import v4 from 'uuid/v4';
 
 class Header extends Component {
   renderLives(livesTotal, livesLeft) {
-    const lives = new Array(livesTotal - livesLeft);
-    lives.fill(<img src={heartEmpty} alt="EmptyLife" width="32" height="32" key={v4()}/>);
+    const lives = [];
+    let livesEmpty = livesTotal - livesLeft;
 
-    while (livesLeft--) {
-      lives.push(<img src={heartFull} alt="Life" width="32" height="32" key={v4()}/>)
+    while(livesEmpty--) {
+      lives.push(<img src={heartEmpty} alt="EmptyLife" width="32" height="32" key={v4()}/>);
+    }
+
+    while(livesLeft--) {
+      lives.push(<img src={heartFull} alt="Life" width="32" height="32" key={v4()}/>);
     }
 
     return lives;

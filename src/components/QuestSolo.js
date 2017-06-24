@@ -12,8 +12,8 @@ class QuestSolo extends Component {
     this.props.initTimer();
   }
 
-  //This is necessary because component won't remount
-  //if a previous screen type is the same as a next screen type
+  //This is necessary because the component won't remount
+  //if a previous screen is the same type as a next screen
   componentWillReceiveProps(nextProps) {
     const nextQuest = nextProps.state.game.currentQuest;
     const { currentQuest } = this.props.state.game;
@@ -68,7 +68,7 @@ class QuestSolo extends Component {
                   <input
                       name="question1"
                       type="radio"
-                      value="paint"
+                      value="painting"
                       onClick={this.handleAnswerClick} />
                   <span>Рисунок</span>
                 </label>
