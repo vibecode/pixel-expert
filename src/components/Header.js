@@ -3,28 +3,21 @@ import HeaderBack from './HeaderBack';
 import '../styles/header.css';
 import heartFull from '../img/heart__full.svg';
 import heartEmpty from '../img/heart__empty.svg';
-import v4 from 'uuid/v4';
 
 class Header extends Component {
   renderLives(livesTotal, livesLeft) {
-    const lives = [];
-    let livesEmpty = livesTotal - livesLeft;
+    const livesEmpty = new Array(livesTotal - livesLeft).fill(false);
+    const livesFull = new Array(livesLeft).fill(true);
 
-    while(livesEmpty--) {
-      lives.push(<img src={heartEmpty} alt="EmptyLife" width="32" height="32" key={v4()}/>);
-    }
-
-    while(livesLeft--) {
-      lives.push(<img src={heartFull} alt="Life" width="32" height="32" key={v4()}/>);
-    }
-
-    return lives;
+    return [...livesEmpty, ...livesFull].map((value, idx) => (
+        <img src={value ? heartFull : heartEmpty} alt="Life" width="32" height="32" key={idx} />
+    ));
   }
 
   render() {
     return (
         <header className="header">
-          <HeaderBack startAgain={this.props.startAgain}/>
+          <HeaderBack startAgain={this.props.startAgain} />
 
           <h1 className="header__timer">{this.props.timeLeft}</h1>
           <div className="header__lives">
