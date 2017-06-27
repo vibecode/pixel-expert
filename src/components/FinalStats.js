@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import v4 from 'uuid/v4';
 import HeaderBack from './HeaderBack';
+import '../styles/result.css';
 
 class FinalStats extends Component {
   getResultsMarkup(results) {
-    return results.map(result => <li className={`stats__result stats__result--${result}`} key={v4()} />)
+    return results.map((result, idx) => <li className={`stats__result stats__result--${result}`} key={idx} />)
   }
 
   getExtraMarkup(result) {
     return result.map(({ title, icon, total, value }) => {
       return (
-          <tr key={v4()}>
+          <tr key={title}>
             <td />
             <td className="result__extra">{title}:</td>
             <td className="result__extra">{value}<span className={`stats__result stats__result--${icon}`} /></td>
@@ -35,7 +35,8 @@ class FinalStats extends Component {
             {finalStats.map(({ resultNumber, win, correctPoints, totalFinalPoints, results, extra }) => {
               if (win) {
                 return (
-                    <table className="result__table" key={v4()}>
+                    <table className="result__table" key={resultNumber}>
+                      <tbody>
                       <tr>
                         <td className="result__number">{resultNumber}.</td>
                         <td colSpan="2">
@@ -50,11 +51,13 @@ class FinalStats extends Component {
                       <tr>
                         <td colSpan="5" className="result__total  result__total--final">{totalFinalPoints}</td>
                       </tr>
+                      </tbody>
                     </table>
                 )
               } else {
                 return (
-                    <table className="result__table" key={v4()}>
+                    <table className="result__table" key={resultNumber}>
+                      <tbody>
                       <tr>
                         <td className="result__number">{resultNumber}.</td>
                         <td>
@@ -65,6 +68,7 @@ class FinalStats extends Component {
                         <td className="result__total" />
                         <td className="result__total  result__total--final">fail</td>
                       </tr>
+                      </tbody>
                     </table>
                 )
               }
