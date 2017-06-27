@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/rules.css';
 import { RULES } from '../constants/strings';
 import * as screenTypes from '../constants/screenTypes';
+import { getScreenType } from '../helpers/helpers';
 import arrowLeft from '../img/arrow_left.svg';
 import logoSmall from '../img/logo_small.png';
 
@@ -20,9 +21,9 @@ class Rules extends Component {
 
   handleGoClick = (e) => {
     e.preventDefault();
+    const { quests } = this.props;
 
-    //TODO: screenType @param  here should depends on fetched data;
-    this.props.changeScreen(screenTypes.QUEST_SOLO);
+    this.props.changeScreen(getScreenType(quests[0]));
   };
 
   onInputChange = (e) => {
@@ -42,7 +43,7 @@ class Rules extends Component {
             <div className="header__back" onClick={this.handleBackClick}>
               <div className="back">
                 <img src={arrowLeft} width="45" height="45" alt="Back" />
-                <img src={logoSmall} width="101" height="44" alt="PixelHunter"/>
+                <img src={logoSmall} width="101" height="44" alt="PixelHunter" />
               </div>
             </div>
           </header>
@@ -55,14 +56,13 @@ class Rules extends Component {
                   type="text"
                   placeholder="Ваше Имя"
                   value={this.state.value}
-                  onChange={this.onInputChange}
-              />
+                  onChange={this.onInputChange} />
               <button
                   className="rules__button  continue"
                   type="submit"
                   disabled={!this.state.value}
-                  onClick={this.handleGoClick}
-              >Go!
+                  onClick={this.handleGoClick}>
+                Go!
               </button>
             </form>
           </div>

@@ -7,6 +7,7 @@ import Rules from './Rules';
 import QuestSolo from './QuestSolo';
 import QuestDouble from './QuestDouble';
 import QuestTriple from './QuestTriple';
+import FinalStats from './FinalStats';
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +22,11 @@ class App extends Component {
       case screenTypes.GREETING:
         return <Greeting changeScreen={this.props.changeScreen} />;
       case screenTypes.RULES:
-        return <Rules changeScreen={this.props.changeScreen} />;
+        return (
+            <Rules
+                changeScreen={this.props.changeScreen}
+                quests={this.props.state.quests} />
+        );
       case screenTypes.QUEST_SOLO:
         return (
             <QuestSolo
@@ -46,6 +51,9 @@ class App extends Component {
                 startGame={this.startGame}
                 timer={this.timer} />
         );
+      case screenTypes.FINAL_STATS:
+        return <FinalStats state={this.props.state}
+                           startAgain={this.props.startAgain} />;
       default:
         throw new Error(`Unknown screenType: ${screenType}`);
     }
@@ -59,15 +67,12 @@ class App extends Component {
   };
 
   startGame = () => {
-    const { currentQuest } = this.props.state.game;
-    const { quests } = this.props.state;
-
     this.timer = setInterval(() => {
       const { timeLeft } = this.props.state.game;
       if (timeLeft) {
         this.props.updateTime(timeLeft - 1);
       } else {
-        this.props.onAnswer(false, currentQuest, quests);
+        this.props.onAnswer(false);
       }
     }, 1000);
   };

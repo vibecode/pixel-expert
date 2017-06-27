@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { GREETING } from '../constants/screenTypes';
+import HeaderBack from './HeaderBack';
 import '../styles/header.css';
-import arrowLeft from '../img/arrow_left.svg';
-import logo from '../img/logo_small.png';
 import heartFull from '../img/heart__full.svg';
 import heartEmpty from '../img/heart__empty.svg';
 import v4 from 'uuid/v4';
@@ -23,19 +21,11 @@ class Header extends Component {
     return lives;
   }
 
-  handleBackClick = () => {
-    this.props.changeScreen(GREETING);
-  };
-
   render() {
     return (
         <header className="header">
-          <div className="header__back" onClick={this.handleBackClick}>
-            <span className="back">
-              <img src={arrowLeft} width="45" height="45" alt="Back" />
-              <img src={logo} width="101" height="44" alt="PixelHunter"/>
-            </span>
-          </div>
+          <HeaderBack startAgain={this.props.startAgain}/>
+
           <h1 className="header__timer">{this.props.timeLeft}</h1>
           <div className="header__lives">
             {this.renderLives(this.props.livesTotal, this.props.livesLeft)}

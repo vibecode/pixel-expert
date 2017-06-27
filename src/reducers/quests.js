@@ -1,5 +1,27 @@
 const INITIAL_STATE =  [
   {
+    "type": "two-of-two",
+    "task": "Угадайте для каждого изображения фото или рисунок?",
+    "answers": [
+      {
+        "image": {
+          "url": "https://k37.kn3.net/695A61B3C.jpg",
+          "width": 468,
+          "height": 458
+        },
+        "type": "painting"
+      },
+      {
+        "image": {
+          "url": "https://k42.kn3.net/F588C1419.jpg",
+          "width": 468,
+          "height": 458
+        },
+        "type": "painting"
+      }
+    ]
+  },
+  {
     "type": "one-of-three",
     "task": "Найдите рисунок среди изображений",
     "answers": [
@@ -170,28 +192,6 @@ const INITIAL_STATE =  [
           "url": "https://k37.kn3.net/47F2604E3.jpg",
           "width": 705,
           "height": 455
-        },
-        "type": "painting"
-      }
-    ]
-  },
-  {
-    "type": "two-of-two",
-    "task": "Угадайте для каждого изображения фото или рисунок?",
-    "answers": [
-      {
-        "image": {
-          "url": "https://k37.kn3.net/695A61B3C.jpg",
-          "width": 468,
-          "height": 458
-        },
-        "type": "painting"
-      },
-      {
-        "image": {
-          "url": "https://k42.kn3.net/F588C1419.jpg",
-          "width": 468,
-          "height": 458
         },
         "type": "painting"
       }

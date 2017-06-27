@@ -12,13 +12,13 @@ class QuestSolo extends Component {
     this.props.initTimer();
   }
 
-  //This is necessary because the component won't remount
-  //if a previous screen is the same type as a next screen
   componentWillReceiveProps(nextProps) {
-    const nextQuest = nextProps.state.game.currentQuest;
-    const { currentQuest } = this.props.state.game;
+    const nextQuestIdx = nextProps.state.game.currentQuestIdx;
+    const { currentQuestIdx } = this.props.state.game;
 
-    if (nextQuest > currentQuest) {
+    //This is necessary because the component won't remount
+    //if a previous screen is the same type as a next screen
+    if (nextQuestIdx > currentQuestIdx) {
       this.props.initTimer();
       this.props.startGame();
     }
@@ -27,20 +27,20 @@ class QuestSolo extends Component {
   handleAnswerClick = (e) => {
     clearInterval(this.props.timer);
 
-    const { currentQuest } = this.props.state.game;
+    const { currentQuestIdx } = this.props.state.game;
     const { quests } = this.props.state;
 
     const answer = e.target.value;
-    const isCorrect = answer === quests[currentQuest].answers[0].type;
+    const isCorrect = answer === quests[currentQuestIdx].answers[0].type;
 
-    this.props.onAnswer(isCorrect, currentQuest, quests);
+    this.props.onAnswer(isCorrect);
   };
 
   render() {
-    const { livesLeft, livesTotal, timeTotal, timeLeft, stats, currentQuest } = this.props.state.game;
+    const { livesLeft, livesTotal, timeTotal, timeLeft, results, currentQuestIdx } = this.props.state.game;
     const { quests } = this.props.state;
-    const { task } = quests[currentQuest];
-    const { url, width, height } = quests[currentQuest].answers[0].image;
+    const { task } = quests[currentQuestIdx];
+    const { url, width, height } = quests[currentQuestIdx].answers[0].image;
 
     return (
         <div>
@@ -49,7 +49,7 @@ class QuestSolo extends Component {
               livesTotal={livesTotal}
               timeTotal={timeTotal}
               timeLeft={timeLeft}
-              changeScreen={this.props.changeScreen} />
+              startAgain={this.props.startAgain} />
 
           <div className="game">
             <p className="game__task">{task}</p>
@@ -76,7 +76,7 @@ class QuestSolo extends Component {
             </form>
           </div>
 
-          <Stats stats={stats} />
+          <Stats stats={results} />
         </div>
     );
   }

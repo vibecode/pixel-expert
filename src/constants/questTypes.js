@@ -5,7 +5,7 @@ export const QuestType = {
 };
 
 export const AnswerType = {
-  PAINTING: 'paint',
+  PAINTING: 'painting',
   PHOTO: 'photo'
 };
 

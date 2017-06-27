@@ -2,19 +2,9 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Stats from './Stats';
 import '../styles/game.css';
-import PropTypes from 'prop-types';
 import v4 from 'uuid/v4';
 
 class QuestDouble extends Component {
-  static propTypes = {
-    livesLeft: PropTypes.number.isRequired,
-    livesTotal: PropTypes.number.isRequired,
-    timeLeft: PropTypes.number.isRequired,
-    timeTotal: PropTypes.number.isRequired,
-    stats: PropTypes.array.isRequired,
-    currentQuest: PropTypes.number.isRequired
-  };
-
   constructor(props) {
     super(props);
 
@@ -32,13 +22,13 @@ class QuestDouble extends Component {
     this.props.initTimer();
   }
 
-  //This is necessary because the component won't remount
-  //if a previous screen is the same type as a next screen
   componentWillReceiveProps(nextProps) {
-    const nextQuest = nextProps.state.game.currentQuest;
-    const { currentQuest } = this.props.state.game;
+    const nextQuestIdx = nextProps.state.game.currentQuestIdx;
+    const { currentQuestIdx } = this.props.state.game;
 
-    if (nextQuest > currentQuest) {
+    //This is necessary because the component won't remount
+    //if a previous screen is the same type as a next screen
+    if (nextQuestIdx > currentQuestIdx) {
       this.props.initTimer();
       this.props.startGame();
     }
@@ -48,16 +38,16 @@ class QuestDouble extends Component {
     if (this.state.question1 && this.state.question2) {
       clearInterval(this.props.timer);
 
-      const { currentQuest } = this.props.state.game;
+      const { currentQuestIdx } = this.props.state.game;
       const { quests } = this.props.state;
-      const { answers } = quests[currentQuest];
+      const { answers } = quests[currentQuestIdx];
 
       const isCorrect = (
           this.state.question1 === answers[0].type
           && this.state.question2 === answers[1].type
       );
 
-      this.props.onAnswer(isCorrect, currentQuest, quests);
+      this.props.onAnswer(isCorrect);
     }
   }
 
@@ -65,12 +55,13 @@ class QuestDouble extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
   };
 
   render() {
-    const { livesLeft, livesTotal, timeTotal, timeLeft, stats, currentQuest } = this.props.state.game;
+    const { livesLeft, livesTotal, timeTotal, timeLeft, results, currentQuestIdx } = this.props.state.game;
     const { quests } = this.props.state;
-    const { task, answers } = quests[currentQuest];
+    const { task, answers } = quests[currentQuestIdx];
 
     return (
         <div>
@@ -79,7 +70,7 @@ class QuestDouble extends Component {
               livesTotal={livesTotal}
               timeTotal={timeTotal}
               timeLeft={timeLeft}
-              changeScreen={this.props.changeScreen} />
+              startAgain={this.props.startAgain} />
 
           <div className="game">
             <p className="game__task">{task}</p>
@@ -103,7 +94,7 @@ class QuestDouble extends Component {
                             name={`question${i + 1}`}
                             type="radio"
                             value="painting"
-                            checked={this.state[`question${i + 1}`] === "paint"} />
+                            checked={this.state[`question${i + 1}`] === "painting"} />
                         <span>Рисунок</span>
                       </label>
                     </div>
@@ -111,7 +102,7 @@ class QuestDouble extends Component {
               })}
             </form>
 
-            <Stats stats={stats} />
+            <Stats stats={results} />
           </div>
         </div>
     )
