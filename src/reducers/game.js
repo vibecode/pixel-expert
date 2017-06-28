@@ -39,8 +39,8 @@ const INITIAL_STATE = {
     {
       title: 'Бонус за жизни',
       icon: 'heart',
-      total: 0,
-      value: 0
+      total: config.LIVES_TOTAL * config.LIVE_POINTS,
+      value: config.LIVES_TOTAL,
     }
   ]
 };
