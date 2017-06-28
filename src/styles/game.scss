@@ -10,6 +10,7 @@
 .game__task {
   font-size: 22px;
   line-height: 35px;
+  margin-top: 0;
 }
 
 .game__content {
@@ -23,8 +24,8 @@
   position: relative;
   border: 10px solid transparent;
 
-  width: 468px;
-  height: 458px;
+  width: 560px;
+  height: 400px;
   font-size: 0;
 
   text-align: center;
@@ -80,7 +81,7 @@
 
   .game__option {
     width: 705px;
-    height: 455px;
+    height: 400px;
   }
 
   .game__answer {
@@ -100,7 +101,7 @@
   cursor: pointer;
 
   width: 304px;
-  height: 455px;
+  height: 400px;
 
   &:hover {
     border-color: #df4e4e;

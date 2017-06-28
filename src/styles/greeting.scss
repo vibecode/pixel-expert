@@ -4,7 +4,7 @@
 .greeting {
   position: relative;
   width: 780px;
-  height: 740px;
+  height: 625px;
 
   transition: background-image 1s ease-in-out;
   background: url("../img/egg_distort.png") no-repeat center;
@@ -19,6 +19,7 @@
 }
 
 .greeting__logo {
+  padding-top: 20px;
   text-align: center;
 }
 
