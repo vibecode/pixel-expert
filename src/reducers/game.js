@@ -84,7 +84,17 @@ export default (state = INITIAL_STATE, action) => {
             return ResultType.WRONG
           }
           return result;
-        })
+        }),
+        extra: state.extra.map(extra => {
+          if (extra.title === extraType.LIVES) {
+            return {
+              ...extra,
+              value: livesLeft,
+              total: livesLeft * config.LIVE_POINTS
+            }
+          }
+          return extra;
+        }),
       };
     case actionTypes.CORRECT_ANSWER:
       const timePassed = state.timeTotal - state.timeLeft;
@@ -103,8 +113,8 @@ export default (state = INITIAL_STATE, action) => {
             if (extra.title === extraType.FAST) {
               return {
                 ...extra,
-                total: extra.total + 1,
-                value: extra.value + config.FAST_POINTS
+                value: extra.value + 1,
+                total: extra.total + config.FAST_POINTS
               }
             }
             return extra;
@@ -124,8 +134,8 @@ export default (state = INITIAL_STATE, action) => {
             if (extra.title === extraType.SLOW) {
               return {
                 ...extra,
-                total: extra.total + 1,
-                value: extra.value + config.SLOW_POINTS
+                value: extra.value + 1,
+                total: extra.total + config.SLOW_POINTS
               }
             }
             return extra;

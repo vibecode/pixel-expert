@@ -15,9 +15,10 @@ export const nextQuest = screenType => {
   }
 };
 
-export const showFinalStats = () => {
+export const showFinalStats = (state) => {
   return {
-    type: actionTypes.SHOW_FINAL_STATS
+    type: actionTypes.SHOW_FINAL_STATS,
+    payload: state
   }
 };
 
@@ -26,16 +27,17 @@ export const onAnswer = (isCorrect) => (dispatch, getState) => {
     type: isCorrect ? actionTypes.CORRECT_ANSWER : actionTypes.WRONG_ANSWER
   });
 
-  const { livesLeft, currentQuestIdx } = getState().game;
+  const state = getState();
+  const { game, quests } = state;
+  const { livesLeft, currentQuestIdx } = state.game;
   const nextQuestIdx = currentQuestIdx + 1;
-  const { quests } = getState();
 
   if (livesLeft && quests[nextQuestIdx]) {
     const quest = quests[nextQuestIdx];
 
     dispatch(nextQuest(getScreenType(quest)));
   } else {
-    dispatch(showFinalStats());
+    dispatch(showFinalStats(game));
   }
 };
 

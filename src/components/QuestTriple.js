@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../styles/game.css';
 import Header from './Header';
 import Stats from './Stats';
-import v4 from 'uuid/v4';
 
 class QuestTriple extends Component {
   componentDidMount() {
@@ -63,7 +62,7 @@ class QuestTriple extends Component {
             <form className="game__content  game__content--triple">
               {answers.map(({ image }, i) => {
                 return (
-                    <div className="game__option" key={v4()} id={i} onClick={this.handleAnswerClick}>
+                    <div className="game__option" key={image.url} id={i} onClick={this.handleAnswerClick}>
                       <img src={image.url} alt={`option-${i + 1}`} width={image.width} height={image.height} />
                     </div>
                 )

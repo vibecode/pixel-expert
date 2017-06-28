@@ -45,7 +45,7 @@ class QuestDouble extends Component {
     });
 
     this.answers.set(e.target.name, e.target.value);
-    console.log(this.answers);
+
     if (this.answers.has('question_1') && this.answers.has('question_2')) {
       clearInterval(this.props.timer);
 

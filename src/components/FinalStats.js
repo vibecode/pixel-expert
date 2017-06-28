@@ -30,7 +30,7 @@ class FinalStats extends Component {
           <HeaderBack startAgain={this.props.startAgain} />
 
           <div className="result">
-            <h1>{lastStats.win ? 'ПОБЕДА' : 'FAIL :('}</h1>
+            <h1>{lastStats.win ? 'ПОБЕДА !' : 'FAIL :('}</h1>
 
             {finalStats.map(({ resultNumber, win, correctPoints, totalFinalPoints, results, extra }) => {
               if (win) {

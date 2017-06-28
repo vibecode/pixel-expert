@@ -4,6 +4,12 @@ import Stats from './Stats';
 import '../styles/game.css';
 
 class QuestSolo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
   componentDidMount() {
     this.props.startGame();
   }
@@ -21,10 +27,18 @@ class QuestSolo extends Component {
     if (nextQuestIdx > currentQuestIdx) {
       this.props.initTimer();
       this.props.startGame();
+
+      this.setState({
+        checked: ''
+      })
     }
   }
 
   handleAnswerClick = (e) => {
+    this.setState({
+      checked: e.target.value
+    });
+
     clearInterval(this.props.timer);
 
     const { currentQuestIdx } = this.props.state.game;
@@ -61,7 +75,8 @@ class QuestSolo extends Component {
                       name="question1"
                       type="radio"
                       value="photo"
-                      onClick={this.handleAnswerClick} />
+                      checked={this.state.checked === 'photo'}
+                      onChange={this.handleAnswerClick} />
                   <span>Фото</span>
                 </label>
                 <label className="game__answer  game__answer--wide  game__answer--paint">
@@ -69,7 +84,8 @@ class QuestSolo extends Component {
                       name="question1"
                       type="radio"
                       value="painting"
-                      onClick={this.handleAnswerClick} />
+                      checked={this.state.checked === 'painting'}
+                      onChange={this.handleAnswerClick} />
                   <span>Рисунок</span>
                 </label>
               </div>
