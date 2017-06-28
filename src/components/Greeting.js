@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as strings from '../constants/strings';
 import '../styles/greeting.css';
-import logo from '../img/logo_big.png';
+import logo from '../img/logo_big.svg';
 import arrow from '../img/arrow_right.svg';
 import { RULES } from '../constants/screenTypes';
 
@@ -14,7 +14,7 @@ class Greeting extends Component {
     return (
         <div className="greeting central--blur">
           <div className="greeting__logo">
-            <img src={logo} width="201" height="89" alt="Pixel Hunter" />
+            <img src={logo} width="500" height="200" alt="Pixel Hunter" />
           </div>
           <h1 className="greeting__asterisk">*</h1>
           <div className="greeting__challenge">

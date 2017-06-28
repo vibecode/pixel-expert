@@ -1,6 +1,6 @@
 import React from 'react';
 import arrowLeft from '../img/arrow_left.svg';
-import logo from '../img/logo_small.png';
+import logo from '../img/logo_small.svg';
 import '../styles/header.css';
 
 export default (props) => {

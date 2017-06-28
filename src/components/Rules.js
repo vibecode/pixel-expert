@@ -3,8 +3,9 @@ import '../styles/rules.css';
 import { RULES } from '../constants/strings';
 import * as screenTypes from '../constants/screenTypes';
 import { getScreenType } from '../helpers/helpers';
-import arrowLeft from '../img/arrow_left.svg';
-import logoSmall from '../img/logo_small.png';
+import HeaderBack from './HeaderBack';
+import photoIcon from '../img/photo_icon.png';
+import paintIcon from '../img/paint_icon.png';
 
 class Rules extends Component {
   constructor(props) {
@@ -13,10 +14,6 @@ class Rules extends Component {
     this.state = {
       value: '',
     }
-  }
-
-  createRulesMarkup() {
-    return { __html: RULES };
   }
 
   handleGoClick = (e) => {
@@ -39,17 +36,17 @@ class Rules extends Component {
   render() {
     return (
         <div>
-          <header className="header">
-            <div className="header__back" onClick={this.handleBackClick}>
-              <div className="back">
-                <img src={arrowLeft} width="45" height="45" alt="Back" />
-                <img src={logoSmall} width="101" height="44" alt="PixelHunter" />
-              </div>
-            </div>
-          </header>
+          <HeaderBack startAgain={this.handleBackClick} />
           <div className="rules">
             <h1 className="rules__title">Правила</h1>
-            <p className="rules__description" dangerouslySetInnerHTML={this.createRulesMarkup()} />
+            <div className="rules__description__block">
+              <span className="rules__description">Угадай 10 раз для каждого изображения фото
+                <img className="rules_icon" src={photoIcon} width="24" height="24" alt="photo" />
+                или рисунок
+                <img className="rules_icon" src={paintIcon} width="24" height="24" alt="painting" /><br />
+              </span>
+              {RULES.split('\n').map((line, idx) => <span key={idx} className="rules__description">{line}<br /></span>)}
+            </div>
             <form className="rules__form">
               <input
                   className="rules__input"
