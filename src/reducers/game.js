@@ -25,19 +25,19 @@ const INITIAL_STATE = {
   ],
   extra: [
     {
-      title: 'Бонус за скорость',
+      title: extraType.FAST,
       icon: 'fast',
       total: 0,
       value: 0,
     },
     {
-      title: 'Штраф за медлительность',
+      title: extraType.SLOW,
       icon: 'slow',
       total: 0,
       value: 0,
     },
     {
-      title: 'Бонус за жизни',
+      title: extraType.LIVES,
       icon: 'heart',
       total: config.LIVES_TOTAL * config.LIVE_POINTS,
       value: config.LIVES_TOTAL,
