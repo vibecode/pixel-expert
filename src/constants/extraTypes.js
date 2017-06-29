@@ -1,5 +1,5 @@
 export default {
-  FAST: 'Бонус за скорость',
-  SLOW: 'Штраф за медлительность',
-  LIVES: 'Бонус за жизни'
+  FAST: 'Speed bonus',
+  SLOW: 'The penalty for being slow',
+  LIVES: 'Bonus for the remaining lives'
 };

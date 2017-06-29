@@ -1,6 +1,8 @@
 @import "colors.scss";
 
 .intro {
+  display: flex;
+  justify-content: center;
   width: 800px;
   height: 625px;
   background: url("../img/egg_big.png") no-repeat center;
@@ -12,7 +14,7 @@
 .intro__asterisk {
   display: block;
   text-align: center;
-
+  height: 172px;
   font-size: 172px;
   line-height: 172px;
   color: $main-red-color;

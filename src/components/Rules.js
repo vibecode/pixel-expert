@@ -38,20 +38,20 @@ class Rules extends Component {
         <div>
           <HeaderBack startAgain={this.handleBackClick} />
           <div className="rules">
-            <h1 className="rules__title">Правила</h1>
+            <h1 className="rules__title">{RULES.HEADING}</h1>
             <div className="rules__description__block">
-              <span className="rules__description">Угадай 10 раз для каждого изображения фото
+              <span className="rules__description">{RULES.FIRST_LINE_PART_1}
                 <img className="rules_icon" src={photoIcon} width="24" height="24" alt="photo" />
-                или рисунок
+                {RULES.FIRST_LINE_PART_2}
                 <img className="rules_icon" src={paintIcon} width="24" height="24" alt="painting" /><br />
               </span>
-              {RULES.split('\n').map((line, idx) => <span key={idx} className="rules__description">{line}<br /></span>)}
+              {RULES.BODY.split('\n').map((line, idx) => <span key={idx} className="rules__description">{line}<br /></span>)}
             </div>
             <form className="rules__form">
               <input
                   className="rules__input"
                   type="text"
-                  placeholder="Ваше Имя"
+                  placeholder="Your name"
                   value={this.state.value}
                   onChange={this.onInputChange} />
               <button

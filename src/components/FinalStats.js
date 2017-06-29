@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HeaderBack from './HeaderBack';
 import '../styles/result.css';
+import { WIN, FAIL } from '../constants/strings';
 
 class FinalStats extends Component {
   getResultsMarkup(results) {
@@ -30,7 +31,7 @@ class FinalStats extends Component {
           <HeaderBack startAgain={this.props.startAgain} />
 
           <div className="result">
-            <h1>{lastStats.win ? 'ПОБЕДА !' : 'FAIL :('}</h1>
+            <h1>{lastStats.win ? WIN : FAIL}</h1>
 
             {finalStats.map(({ resultNumber, win, correctPoints, totalFinalPoints, results, extra }) => {
               if (win) {

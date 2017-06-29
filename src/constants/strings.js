@@ -1,14 +1,21 @@
-export const MOTTO = `Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.`;
+export const MOTTO = `This is not a photo. This is a painting by the Dutch artist Tjalf Sparnaay.`;
 
-export const GREETING_TITLE = `Лучшие художники-фотореалисты бросают тебе вызов!`;
-export const GREETING_RULES = `Правила игры просты.
-Нужно отличить рисунок от фотографии и сделать выбор.
-Задача кажется тривиальной, но не думай, что все так просто.
-Фотореализм обманчив и коварен.
-Помни, главное — смотреть очень внимательно.`;
+export const GREETING_TITLE = `The best photorealism artists are going to challenge you!`;
+export const GREETING_RULES = `The rules are simple.
+You should distinguish the picture from the photo and make a choice.
+The task seems trivial, but don't think that everything is that simple.
+Photorealism is deceptive and cunning.
+Just remember, the main thing is to look carefully.`;
 
+export const RULES = {
+  HEADING: 'THE RULES',
+  FIRST_LINE_PART_1: `For each image guess is it photo`,
+  FIRST_LINE_PART_2: `or painting`,
+  BODY:`Both images can be photos or paintings.
+You have 30 seconds for each attempt.
+After 3 wrong answers the game is over.
+Are you ready?`
+};
 
-export const RULES = `Фотографиями или рисунками могут быть оба изображения.
-На каждую попытку отводится 30 секунд.
-Ошибиться можно не более 3 раз.
-Готовы?`;
+export const WIN = 'YOU WIN!';
+export const FAIL = 'FAIL :(';
