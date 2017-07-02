@@ -18,7 +18,7 @@ class App extends Component {
   renderScreen(screenType) {
     switch (screenType) {
       case screenTypes.INTRO:
-        return <Intro changeScreen={this.props.changeScreen} />;
+        return <Intro {...this.props} />;
       case screenTypes.GREETING:
         return <Greeting changeScreen={this.props.changeScreen} />;
       case screenTypes.RULES:

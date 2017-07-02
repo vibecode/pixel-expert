@@ -4,6 +4,10 @@ import { MOTTO } from '../constants/strings';
 import { GREETING } from '../constants/screenTypes';
 
 class Intro extends Component {
+  componentDidMount() {
+    this.props.fetchData();
+  }
+
   handleOnClick = () => {
     this.props.changeScreen(GREETING);
   };

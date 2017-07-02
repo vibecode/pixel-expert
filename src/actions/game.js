@@ -1,11 +1,13 @@
 import * as actionTypes from '../constants/actionTypes';
 import { getScreenType } from '../helpers/helpers';
+import * as firebase from 'firebase';
 
-export const updateTime = timeLeft => {
-  return {
-    type: actionTypes.UPDATE_TIME,
-    payload: timeLeft
-  }
+export const fetchData = () => (dispatch, getState) => {
+  const ref = firebase.database().ref();
+  ref.once("value")
+     .then(snapshot => {
+       const images = snapshot.val();
+     }).catch(err => alert(err));
 };
 
 export const nextQuest = screenType => {
@@ -15,14 +17,21 @@ export const nextQuest = screenType => {
   }
 };
 
-export const showFinalStats = (state) => {
+export const updateTime = timeLeft => {
+  return {
+    type: actionTypes.UPDATE_TIME,
+    payload: timeLeft
+  }
+};
+
+export const showFinalStats = state => {
   return {
     type: actionTypes.SHOW_FINAL_STATS,
     payload: state
   }
 };
 
-export const onAnswer = (isCorrect) => (dispatch, getState) => {
+export const onAnswer = isCorrect => (dispatch, getState) => {
   dispatch({
     type: isCorrect ? actionTypes.CORRECT_ANSWER : actionTypes.WRONG_ANSWER
   });
