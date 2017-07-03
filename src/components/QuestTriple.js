@@ -27,6 +27,7 @@ class QuestTriple extends Component {
   handleAnswerClick = (e) => {
     clearInterval(this.props.timer);
 
+    const answerId = e.target.id;
     const { currentQuestIdx } = this.props.state.game;
     const { quests } = this.props.state;
     const { answers } = quests[currentQuestIdx];
@@ -38,7 +39,7 @@ class QuestTriple extends Component {
       return Object.keys(count).filter(key => count[key] === 1).join('');
     };
 
-    const isCorrect = answers[e.target.id].type === findCorrectAnswer(answers);
+    const isCorrect = answers[answerId].type === findCorrectAnswer(answers);
 
     this.props.onAnswer(isCorrect);
   };
@@ -62,8 +63,14 @@ class QuestTriple extends Component {
             <form className="game__content  game__content--triple">
               {answers.map(({ image }, i) => {
                 return (
-                    <div className="game__option" key={image.url} id={i} onClick={this.handleAnswerClick}>
-                      <img src={image.url} alt={`option-${i + 1}`} width={image.width} height={image.height} />
+                    <div className="game__option" key={i}>
+                      <img
+                          src={image.url}
+                          alt={`option-${i + 1}`}
+                          width={image.width}
+                          height={image.height}
+                          id={i}
+                          onClick={this.handleAnswerClick} />
                     </div>
                 )
               })}

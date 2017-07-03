@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/intro.css';
 import { MOTTO } from '../constants/strings';
-import { GREETING } from '../constants/screenTypes';
 import Preloader from './Preloader';
 
 class Intro extends Component {
@@ -11,7 +10,7 @@ class Intro extends Component {
 
   render() {
     const { fetchSuccess } = this.props.state.quests;
-    console.log(fetchSuccess);
+
     return (
         <div id="intro" className={'intro ' + (fetchSuccess ? 'hide' : '')}>
           <Preloader />
