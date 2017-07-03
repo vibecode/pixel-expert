@@ -1,98 +1,18 @@
-// import { QuestType } from '../constants/questTypes';
-// import * as ScreenTypes from '../constants/screenTypes';
+import { QuestType } from '../constants/questTypes';
+import * as ScreenTypes from '../constants/screenTypes';
 
-// export const  getScreenType = (quest) => {
-//   switch (quest.type) {
-//     case QuestType.QUEST_SOLO:
-//       return ScreenTypes.QUEST_SOLO;
-//     case QuestType.QUEST_DOUBLE:
-//       return ScreenTypes.QUEST_DOUBLE;
-//     case QuestType.QUEST_TRIPLE:
-//       return ScreenTypes.QUEST_TRIPLE;
-//     default:
-//       throw new Error(`Unknown quest type ${quest.type}`);
-//   }
-// };
-
-const images = [
-  {
-    type: 'photo',
-    url: ['lol.jpeg', 'kek.jpeg']
-  },
-  {
-    type: 'painting',
-    url: ['lenin.jpeg', 'stalin.jpeg']
+export const  getScreenType = (quest) => {
+  switch (quest.type) {
+    case QuestType.QUEST_SOLO:
+      return ScreenTypes.QUEST_SOLO;
+    case QuestType.QUEST_DOUBLE:
+      return ScreenTypes.QUEST_DOUBLE;
+    case QuestType.QUEST_TRIPLE:
+      return ScreenTypes.QUEST_TRIPLE;
+    default:
+      throw new Error(`Unknown quest type ${quest.type}`);
   }
-];
-
-const screens = [
-  {
-    "type": "two-of-two",
-    "task": "Угадайте для каждого изображения фото или рисунок?",
-    "answers": [
-      {
-        "image": {
-          "url": "",
-          "width": 560,
-          "height": 400
-        },
-        "type": ""
-      },
-      {
-        "image": {
-          "url": "",
-          "width": 560,
-          "height": 400
-        },
-        "type": ""
-      }
-    ]
-  },
-  {
-    "type": "one-of-three",
-    "task": "",
-    "answers": [
-      {
-        "image": {
-          "url": "",
-          "width": 304,
-          "height": 400
-        },
-        "type": ""
-      },
-      {
-        "image": {
-          "url": "",
-          "width": 304,
-          "height": 400
-        },
-        "type": ""
-      },
-      {
-        "image": {
-          "url": "",
-          "width": 304,
-          "height": 400
-        },
-        "type": ""
-      }
-    ]
-  },
-  {
-    "type": "tinder-like",
-    "task": "Угадай, фото или рисунок?",
-    "answers": [
-      {
-        "image": {
-          "url": "",
-          "width": 705,
-          "height": 400
-        },
-        "type": ""
-      }
-    ]
-  }
-];
+};
 
 const getRandomItemFromArray = (arr) => {
   const idx = Math.floor(Math.random() * arr.length);
@@ -100,7 +20,7 @@ const getRandomItemFromArray = (arr) => {
   return arr[idx];
 };
 
-const generateSchema = (screens, images) => {
+export const generateQuest = (screens, images) => {
   const screen = getRandomItemFromArray(screens);
 
   if (screen.type === 'one-of-three') {
@@ -178,5 +98,3 @@ const generateSchema = (screens, images) => {
 
   return { ...screen, answers };
 };
-
-generateSchema(screens, images);
