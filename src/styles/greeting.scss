@@ -6,10 +6,17 @@
   width: 780px;
   min-height: 625px;
 
-  transition: background-image 1s ease-in-out;
+  //transition: background-image 1s ease-in-out;
   background: url("../img/egg_distort.png") no-repeat center;
   background-size: contain;
   background-position: top;
+
+  opacity: 0;
+  transition: opacity 1s linear;
+}
+
+.greeting.show {
+  opacity: 1;
 }
 
 .greeting__asterisk {

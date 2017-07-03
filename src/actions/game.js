@@ -5,6 +5,7 @@ import screensSchema from '../constants/screensSchema';
 import * as firebase from 'firebase';
 
 export const fetchData = () => (dispatch) => {
+  //get images urls from firebase
   const ref = firebase.database().ref();
   ref.once("value")
      .then(snapshot => {
@@ -39,11 +40,14 @@ export const fetchData = () => (dispatch) => {
                   type: actionTypes.FETCH_SUCCESS,
                   payload: quests
                 });
-                dispatch({
-                  type: actionTypes.CHANGE_SCREEN,
-                  payload: GREETING
-                });
-              }).catch(() => alert(`Не вышло загрузить все необходимые изображения :(.\nПопробуйте перезагрузить страницу.`))
+                setTimeout(() => {
+                  dispatch({
+                    type: actionTypes.CHANGE_SCREEN,
+                    payload: GREETING
+                  });
+                }, 2000)
+              }).catch(() => alert(`Не вышло загрузить все необходимые изображения :(.
+              \nПопробуйте перезагрузить страницу.`))
 
      }).catch(err => alert(err));
 };

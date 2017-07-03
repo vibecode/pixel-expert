@@ -6,13 +6,27 @@ import arrow from '../img/arrow_right.svg';
 import { RULES } from '../constants/screenTypes';
 
 class Greeting extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mounted: false
+    }
+  }
   handleNextClick = () => {
     this.props.changeScreen(RULES);
   };
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        mounted: true
+      })
+    }, 100)
+  }
+
   render() {
     return (
-        <div className="greeting central--blur">
+        <div className={"greeting " + (this.state.mounted ? 'show' : '')}>
           <div className="greeting__logo">
             <img src={logo} width="500" height="200" alt="Pixel Hunter" />
           </div>

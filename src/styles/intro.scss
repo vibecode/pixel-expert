@@ -2,44 +2,22 @@
 
 .intro {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 800px;
   height: 625px;
   background: url("../img/egg_big.png") no-repeat center;
   background-size: contain;
-
-  position: relative;
+  transition: opacity 1.5s linear;
 }
 
-.intro__asterisk {
-  display: block;
-  text-align: center;
-  height: 172px;
-  font-size: 172px;
-  line-height: 172px;
-  color: $main-red-color;
-  cursor: pointer;
-  text-decoration: none;
-
-  margin: 0;
-
-  position: relative;
-  top: 220px;
-  left: 30px;
-
-  &:hover {
-    color: $link-hover-color;
-  }
-
-  &:active {
-    color: $link-active-color;
-  }
+.intro.hide {
+  opacity: 0;
 }
 
 .intro__motto {
-  position: absolute;
+  align-self: center;
   font-size: 18px;
   line-height: 1.3;
   background-color: rgba(130, 236, 235, 0.4);
-  bottom: 0;
 }
