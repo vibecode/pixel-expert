@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/rules.css';
 import { RULES } from '../constants/strings';
-import * as screenTypes from '../constants/screenTypes';
 import HeaderBack from './HeaderBack';
 import photoIcon from '../img/photo_icon.png';
 import paintIcon from '../img/paint_icon.png';
