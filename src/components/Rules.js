@@ -29,7 +29,7 @@ class Rules extends Component {
   };
 
   handleBackClick = () => {
-    this.props.changeScreen(screenTypes.GREETING);
+    this.props.startAgain();
   };
 
   render() {

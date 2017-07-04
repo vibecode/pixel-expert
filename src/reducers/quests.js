@@ -11,6 +11,10 @@ export default ( state = INITIAL_STATE, action) => {
           fetchSuccess: true,
           ...action.payload
       };
+    case actionTypes.START_AGAIN:
+    return {
+        ...INITIAL_STATE
+    };
     default:
       return state
   }

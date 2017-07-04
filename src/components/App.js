@@ -20,11 +20,11 @@ class App extends Component {
       case screenTypes.INTRO:
         return <Intro {...this.props} />;
       case screenTypes.GREETING:
-        return <Greeting changeScreen={this.props.changeScreen} />;
+        return <Greeting {...this.props} />;
       case screenTypes.RULES:
         return (
             <Rules
-                changeScreen={this.props.changeScreen}
+                {...this.props}
                 quests={this.props.state.quests} />
         );
       case screenTypes.QUEST_SOLO:

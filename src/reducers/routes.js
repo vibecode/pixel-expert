@@ -20,7 +20,7 @@ export default (state = INITIAL_STATE, action) => {
     case START_AGAIN:
       return {
         ...state,
-        path: screenTypes.GREETING
+        path: screenTypes.INTRO
       };
     case NEXT_QUEST:
       return {
