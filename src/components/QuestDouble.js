@@ -35,7 +35,9 @@ class QuestDouble extends Component {
       this.setState({
         question_1: '',
         question_2: ''
-      })
+      });
+
+      this.answers = new Map();
     }
   }
 
@@ -43,7 +45,7 @@ class QuestDouble extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-
+    console.log(this.answers);
     this.answers.set(e.target.name, e.target.value);
 
     if (this.answers.has('question_1') && this.answers.has('question_2')) {
