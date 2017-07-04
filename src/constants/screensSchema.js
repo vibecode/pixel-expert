@@ -1,7 +1,10 @@
+import { Tasks } from '../constants/strings';
+import * as ScreenTypes from '../constants/screenTypes';
+
 export default [
   {
-    "type": "two-of-two",
-    "task": "Угадайте для каждого изображения фото или рисунок?",
+    "type": ScreenTypes.QUEST_DOUBLE,
+    "task": Tasks.DOUBLE,
     "answers": [
       {
         "image": {
@@ -22,7 +25,7 @@ export default [
     ]
   },
   {
-    "type": "one-of-three",
+    "type": ScreenTypes.QUEST_TRIPLE,
     "task": "",
     "answers": [
       {
@@ -52,8 +55,8 @@ export default [
     ]
   },
   {
-    "type": "tinder-like",
-    "task": "Угадай, фото или рисунок?",
+    "type": ScreenTypes.QUEST_SOLO,
+    "task": Tasks.SOLO,
     "answers": [
       {
         "image": {

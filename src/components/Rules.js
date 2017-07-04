@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../styles/rules.css';
 import { RULES } from '../constants/strings';
 import * as screenTypes from '../constants/screenTypes';
-import { getScreenType } from '../helpers/helpers';
 import HeaderBack from './HeaderBack';
 import photoIcon from '../img/photo_icon.png';
 import paintIcon from '../img/paint_icon.png';
@@ -20,7 +19,7 @@ class Rules extends Component {
     e.preventDefault();
     const { quests } = this.props;
 
-    this.props.changeScreen(getScreenType(quests[0]));
+    this.props.changeScreen(quests[0].type);
   };
 
   onInputChange = (e) => {
@@ -41,9 +40,9 @@ class Rules extends Component {
             <h1 className="rules__title">{RULES.HEADING}</h1>
             <div className="rules__description__block">
               <span className="rules__description">{RULES.FIRST_LINE_PART_1}
-                <img className="rules_icon" src={photoIcon} width="24" height="24" alt="photo" />
+                <img className="rules_icon" src={photoIcon} width="24" height="24" alt="" />
                 {RULES.FIRST_LINE_PART_2}
-                <img className="rules_icon" src={paintIcon} width="24" height="24" alt="painting" /><br />
+                <img className="rules_icon" src={paintIcon} width="24" height="24" alt="" /><br />
               </span>
               {RULES.BODY.split('\n').map((line, idx) => <span key={idx} className="rules__description">{line}<br /></span>)}
             </div>

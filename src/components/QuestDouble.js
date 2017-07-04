@@ -81,7 +81,7 @@ class QuestDouble extends Component {
             <form className="game__content">
               {answers.map(({ image }, i) => {
                 return (
-                    <div className="game__option" key={image.url}>
+                    <div className="game__option" key={i}>
                       <img src={image.url} alt={`Option ${i + 1}`} width={image.width} height={image.height} />
                       <label className="game__answer game__answer--photo">
                         <input

@@ -38,7 +38,7 @@ class Greeting extends Component {
             </div>
           </div>
           <div className="greeting__continue" onClick={this.handleNextClick}>
-              <img src={arrow} width="64" height="64" alt="Next" />
+              <img src={arrow} width="100" height="100" alt="Next" />
           </div>
         </div>
     );

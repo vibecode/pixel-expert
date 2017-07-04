@@ -6,10 +6,12 @@ import '../styles/game.css';
 class QuestSolo extends Component {
   constructor(props) {
     super(props);
-    this.state = {
 
+    this.state = {
+      checked: ''
     }
   }
+
   componentDidMount() {
     this.props.startGame();
   }

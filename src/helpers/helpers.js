@@ -1,18 +1,5 @@
-import { QuestType } from '../constants/questTypes';
 import * as ScreenTypes from '../constants/screenTypes';
-
-export const  getScreenType = (quest) => {
-  switch (quest.type) {
-    case QuestType.QUEST_SOLO:
-      return ScreenTypes.QUEST_SOLO;
-    case QuestType.QUEST_DOUBLE:
-      return ScreenTypes.QUEST_DOUBLE;
-    case QuestType.QUEST_TRIPLE:
-      return ScreenTypes.QUEST_TRIPLE;
-    default:
-      throw new Error(`Unknown quest type ${quest.type}`);
-  }
-};
+import { Tasks } from '../constants/strings';
 
 const getRandomItemFromArray = (arr) => {
   const idx = Math.floor(Math.random() * arr.length);
@@ -23,11 +10,11 @@ const getRandomItemFromArray = (arr) => {
 export const generateQuest = (screens, images) => {
   const screen = getRandomItemFromArray(screens);
 
-  if (screen.type === 'one-of-three') {
+  if (screen.type === ScreenTypes.QUEST_TRIPLE) {
     const correctImage = getRandomItemFromArray(images);
     const correctUrl = getRandomItemFromArray(correctImage.url);
     const correctIdx = Math.floor(Math.random() * 3);
-    const task = correctImage.type === 'photo' ? 'Найдите фото среди изображений' : 'Найдите рисунок среди изображений';
+    const task = correctImage.type === 'photo' ? Tasks.TRIPLE_PHOTO : Tasks.TRIPLE_PAINTING;
 
     const answersWithCorrect = [
       ...screen.answers.slice(0, correctIdx),

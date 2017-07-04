@@ -1,9 +1,3 @@
-export const QuestType = {
-  QUEST_SOLO: 'tinder-like',
-  QUEST_DOUBLE: 'two-of-two',
-  QUEST_TRIPLE: 'one-of-three'
-};
-
 export const AnswerType = {
   PAINTING: 'painting',
   PHOTO: 'photo'

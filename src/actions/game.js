@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/actionTypes';
 import { GREETING } from '../constants/screenTypes';
-import { getScreenType, generateQuest } from '../helpers/helpers';
+import { generateQuest } from '../helpers/helpers';
 import screensSchema from '../constants/screensSchema';
 import * as firebase from 'firebase';
 
@@ -86,7 +86,7 @@ export const onAnswer = isCorrect => (dispatch, getState) => {
   if (livesLeft && quests[nextQuestIdx]) {
     const quest = quests[nextQuestIdx];
 
-    dispatch(nextQuest(getScreenType(quest)));
+    dispatch(nextQuest(quest.type));
   } else {
     dispatch(showFinalStats(game));
   }
