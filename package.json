@@ -1,7 +1,7 @@
 {
   "name": "pixel-expert",
   "version": "0.1.0",
-  "license": "MIT",
+  "license": "ICS",
   "private": false,
   "homepage": "http://vibecode.github.io/pixel-expert",
   "dependencies": {
