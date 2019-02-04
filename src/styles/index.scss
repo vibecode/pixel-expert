@@ -1,5 +1,5 @@
-@import "colors.scss";
-@import "fonts.scss";
+@import 'colors.scss';
+@import 'fonts.scss';
 
 html {
   min-height: 100%;
@@ -8,11 +8,26 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, rgba(255,0,247,1) 0%, rgba(255,0,247,1) 17%, rgba(119,0,255,1) 49%, rgba(31,255,184,1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 247, 1) 0%,
+    rgba(255, 0, 247, 1) 17%,
+    rgba(119, 0, 255, 1) 49%,
+    rgba(31, 255, 184, 1) 100%
+  );
   @include regular-text;
   color: $main-font-color;
   min-height: 100%;
   padding: 0;
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
 }
 
 a {

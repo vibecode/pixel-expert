@@ -1,4 +1,4 @@
-@import "fonts.scss";
+@import 'fonts.scss';
 
 .game {
   display: flex;
@@ -11,7 +11,7 @@
   font-size: 22px;
   line-height: 35px;
   margin-top: 0;
-  background-color: rgba(255, 0, 235, 0.7);
+  background-color: #dd5284;
 }
 
 .game__content {
@@ -70,21 +70,20 @@
 
   &--photo {
     input + span {
-      background-image: url("../img/photo_big.png");
+      background-image: url('../img/photo_big.png');
     }
     left: 30px;
   }
 
   &--paint {
     input + span {
-      background-image: url("../img/paint_big.png");
+      background-image: url('../img/paint_big.png');
     }
     right: 30px;
   }
 }
 
 .game__content--wide {
-
   .game__option {
     width: 705px;
     height: 400px;
@@ -95,7 +94,7 @@
   }
 
   .game__answer--photo {
-    left: -100px
+    left: -100px;
   }
 
   .game__answer--paint {

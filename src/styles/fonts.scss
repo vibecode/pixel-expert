@@ -1,26 +1,26 @@
 @mixin small-text() {
-  font:  {
+  font: {
     family: 'Roboto', sans-serif;
-    size: 12px;
+    size: 16px;
     weight: normal;
-  };
+  }
   line-height: 12px;
 }
 
 @mixin regular-text() {
-  font:  {
+  font: {
     family: 'Roboto', sans-serif;
-    size: 22px;
+    size: 24px;
     weight: 500;
-  };
+  }
   line-height: 34px;
 }
 
 @mixin bold-text() {
-  font:  {
+  font: {
     family: 'Roboto', sans-serif;
     size: 30px;
     weight: bold;
-  };
+  }
   line-height: 30px;
 }
