@@ -12,3 +12,12 @@
   display: flex;
   min-height: 625px;
 }
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 1.5s ease-in;
+}

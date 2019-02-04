@@ -8,11 +8,22 @@
   height: 625px;
   background: url("../img/egg_big.png") no-repeat center;
   background-size: contain;
-  transition: opacity 1.5s linear;
+  opacity: 1;
+  transition: opacity 1.5s ease-in;
 }
 
-.intro.hide {
+.hide {
   opacity: 0;
+}
+
+.fetch-error {
+  color: #d74040;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  align-self: center;
+  margin-bottom: 240px;
+  margin-left: 60px;
 }
 
 .intro__motto {

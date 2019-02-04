@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/intro.css';
 import { MOTTO } from '../constants/strings';
 import Preloader from './Preloader';
+import classNames from 'classnames';
 
 class Intro extends Component {
   componentDidMount() {
@@ -9,11 +10,14 @@ class Intro extends Component {
   }
 
   render() {
-    const { fetchSuccess } = this.props.state.quests;
-
+    const { fetchSuccess, fetchError } = this.props.state.quests;
     return (
-        <div id="intro" className={'intro ' + (fetchSuccess ? 'hide' : '')}>
-          <Preloader />
+        <div id="intro" className={classNames('intro', { hide: fetchSuccess })}>
+          {fetchError ? <p className="fetch-error">
+            <span>Oops :(<br/>
+              Can't download required data<br />
+              Try to reload the page
+            </span></p> : <Preloader />}
           <p className="intro__motto">
             <sup>*</sup>
             {MOTTO}
