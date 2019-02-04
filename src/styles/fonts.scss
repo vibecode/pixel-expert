@@ -13,14 +13,14 @@
     size: 24px;
     weight: 500;
   }
-  line-height: 34px;
+  line-height: 1.5;
 }
 
 @mixin bold-text() {
   font: {
     family: 'Roboto', sans-serif;
-    size: 30px;
+    size: 42px;
     weight: bold;
   }
-  line-height: 30px;
+  line-height: 1;
 }

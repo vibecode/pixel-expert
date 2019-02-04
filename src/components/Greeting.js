@@ -22,6 +22,7 @@ class Greeting extends Component {
             <div className="greeting__logo">
               <img src={logo} width="500" height="200" alt="Pixel Expert" />
             </div>
+
             {/* <h1 className="greeting__asterisk">*</h1> */}
             <div className="greeting__challenge">
               {/*  <h3 className="greeting__title">{strings.GREETING_TITLE}</h3> */}
@@ -37,13 +38,7 @@ class Greeting extends Component {
               className="greeting__continue pulse"
               onClick={this.handleNextClick}
             >
-              <img
-                className="arrow"
-                src={arrow}
-                width="300"
-                height="100"
-                alt="Next"
-              />
+              <img className="arrow" src={arrow} alt="Next" />
             </div>
           </div>
         </CSSTransition>

@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Generator: Adobe Illustrator 20.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)-->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" width="300" x="0px" y="0px" fill="#dd5284" viewBox="0 0 78.2 56.7">
-    <path id="rect899" d="M37.5,56.5l4-19.8L0,40.9V14.4l41.6,4.2L37.5,0l40.6,27.7L37.5,56.5z"/>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 175.7 127.7" style="enable-background:new 0 0 175.7 127.7;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#DFFFFF;}
+	.st1{fill:#DF4E4E;}
+</style>
+<g id="rect899">
+	<path class="st0" d="M86.5,119.7c-2.7,1.9-4.4,0.8-3.7-2.4l6.2-31c0.7-3.2-1.5-5.6-4.8-5.3L6.6,89c-3.3,0.3-6-2.1-6-5.4V38.3
+		c0-3.3,2.7-5.7,6-5.4l77.9,7.9c3.3,0.3,5.4-2,4.7-5.3L82.9,7.1c-0.7-3.2,0.9-4.3,3.7-2.5l77.8,53c2.7,1.9,2.8,4.9,0.1,6.9
+		L86.5,119.7z"/>
+</g>
+<g id="rect899_1_">
+	<path class="st1" d="M91.5,123.7c-2.7,1.9-4.4,0.8-3.7-2.4l6.2-31c0.7-3.2-1.5-5.6-4.8-5.3l-77.7,8c-3.3,0.3-6-2.1-6-5.4V42.3
+		c0-3.3,2.7-5.7,6-5.4l77.9,7.9c3.3,0.3,5.4-2,4.7-5.3l-6.2-28.5c-0.7-3.2,0.9-4.3,3.7-2.5l77.8,53c2.7,1.9,2.8,4.9,0.1,6.9
+		L91.5,123.7z"/>
+</g>
 </svg>
