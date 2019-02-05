@@ -1,7 +1,7 @@
-import * as actionTypes from '../constants/actionTypes';
-import { ResultType } from '../constants/questTypes';
-import extraType from '../constants/extraTypes';
-import config from '../constants/config';
+import * as actionTypes from '../constants/actionTypes'
+import { ResultType } from '../constants/questTypes'
+import extraType from '../constants/extraTypes'
+import config from '../constants/config'
 
 const INITIAL_STATE = {
   currentQuestIdx: 0,
@@ -28,52 +28,50 @@ const INITIAL_STATE = {
       title: extraType.FAST,
       icon: 'fast',
       total: 0,
-      value: 0,
+      value: 0
     },
     {
       title: extraType.SLOW,
       icon: 'slow',
       total: 0,
-      value: 0,
+      value: 0
     },
     {
       title: extraType.LIVES,
       icon: 'heart',
       total: config.LIVES_TOTAL * config.LIVE_POINTS,
-      value: config.LIVES_TOTAL,
+      value: config.LIVES_TOTAL
     }
   ]
-};
+}
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.UPDATE_TIME:
       if (action.payload < 0) {
-        throw new RangeError(`Time can't be negative`);
+        throw new RangeError(`Time can't be negative`)
       }
 
       if (action.payload > state.timeTotal) {
-        throw new RangeError(`Time can't be more than ${state.timeTotal}`);
+        throw new RangeError(`Time can't be more than ${state.timeTotal}`)
       }
 
       return {
         ...state,
         timeLeft: action.payload
-      };
+      }
     case actionTypes.NEXT_QUEST:
       return {
         ...state,
         currentQuestIdx: state.currentQuestIdx + 1
-      };
-    case actionTypes.WRONG_ANSWER:
-      const livesLeft = state.livesLeft - 1;
-
-      if (livesLeft < 0) {
-        throw new RangeError(`Number of lives can't be negative`);
       }
+    case actionTypes.WRONG_ANSWER:
+      let livesLeft
 
-      if (livesLeft > state.livesTotal) {
-        throw new RangeError(`Number of lives can't be more than ${state.livesTotal}`);
+      if (state.livesLeft > 0) {
+        livesLeft = state.livesLeft - 1
+      } else {
+        livesLeft = 0
       }
 
       return {
@@ -83,7 +81,7 @@ export default (state = INITIAL_STATE, action) => {
           if (idx === state.currentQuestIdx) {
             return ResultType.WRONG
           }
-          return result;
+          return result
         }),
         extra: state.extra.map(extra => {
           if (extra.title === extraType.LIVES) {
@@ -93,11 +91,11 @@ export default (state = INITIAL_STATE, action) => {
               total: livesLeft * config.LIVE_POINTS
             }
           }
-          return extra;
-        }),
-      };
+          return extra
+        })
+      }
     case actionTypes.CORRECT_ANSWER:
-      const timePassed = state.timeTotal - state.timeLeft;
+      const timePassed = state.timeTotal - state.timeLeft
 
       if (timePassed < 10) {
         return {
@@ -107,7 +105,7 @@ export default (state = INITIAL_STATE, action) => {
             if (idx === state.currentQuestIdx) {
               return ResultType.FAST
             }
-            return result;
+            return result
           }),
           extra: state.extra.map(extra => {
             if (extra.title === extraType.FAST) {
@@ -117,7 +115,7 @@ export default (state = INITIAL_STATE, action) => {
                 total: extra.total + config.FAST_POINTS
               }
             }
-            return extra;
+            return extra
           })
         }
       } else if (timePassed > 20) {
@@ -128,7 +126,7 @@ export default (state = INITIAL_STATE, action) => {
             if (idx === state.currentQuestIdx) {
               return ResultType.SLOW
             }
-            return result;
+            return result
           }),
           extra: state.extra.map(extra => {
             if (extra.title === extraType.SLOW) {
@@ -138,7 +136,7 @@ export default (state = INITIAL_STATE, action) => {
                 total: extra.total + config.SLOW_POINTS
               }
             }
-            return extra;
+            return extra
           })
         }
       } else {
@@ -149,19 +147,19 @@ export default (state = INITIAL_STATE, action) => {
             if (idx === state.currentQuestIdx) {
               return ResultType.CORRECT
             }
-            return result;
+            return result
           })
         }
       }
     case actionTypes.SHOW_FINAL_STATS:
       return {
         ...state
-      };
+      }
     case actionTypes.START_AGAIN:
       return {
-        ...INITIAL_STATE,
-      };
+        ...INITIAL_STATE
+      }
     default:
-      return state;
+      return state
   }
 }

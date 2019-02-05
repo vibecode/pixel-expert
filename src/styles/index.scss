@@ -1,7 +1,8 @@
 @import 'colors.scss';
 @import 'fonts.scss';
 
-html {
+html,
+body {
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -17,8 +18,6 @@ body {
   );
   @include regular-text;
   color: $main-font-color;
-  min-height: 100%;
-  padding: 0;
 }
 
 .center-screen {

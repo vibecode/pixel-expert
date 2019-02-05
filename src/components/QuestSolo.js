@@ -13,20 +13,19 @@ class QuestSolo extends Component {
   }
 
   componentDidMount() {
+    console.log('triggered solo')
     this.props.startGame()
   }
 
-  componentWillUnmount() {
-    this.props.initTimer()
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const nextQuestIdx = nextProps.state.game.currentQuestIdx
+  componentDidUpdate(prevProps) {
+    const prevOuestIndex = prevProps.state.game.currentQuestIdx
     const { currentQuestIdx } = this.props.state.game
 
     //This is necessary because the component won't remount
     //if a previous screen is the same type as a next screen
-    if (nextQuestIdx > currentQuestIdx) {
+    if (currentQuestIdx > prevOuestIndex) {
+      console.log('did update called')
+
       this.props.initTimer()
       this.props.startGame()
 

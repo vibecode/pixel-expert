@@ -10,15 +10,6 @@
   // background-size: contain;
 }
 
-.greeting-appear {
-  opacity: 0.01;
-}
-
-.greeting-appear.greeting-appear-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
 .greeting__asterisk {
   font-size: 80px;
   color: $main-red-color;

@@ -8,19 +8,21 @@ import QuestSolo from './QuestSolo'
 import QuestDouble from './QuestDouble'
 import QuestTriple from './QuestTriple'
 import FinalStats from './FinalStats'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 class App extends Component {
   constructor(props) {
     super(props)
+
     this.timer = null
   }
 
   renderScreen(screenType) {
     switch (screenType) {
       case screenTypes.INTRO:
-        return <Intro {...this.props} />
+        return <Intro {...this.props} key="intro" />
       case screenTypes.GREETING:
-        return <Greeting {...this.props} />
+        return <Greeting {...this.props} key="greeting" />
       case screenTypes.RULES:
         return <Rules {...this.props} quests={this.props.state.quests} />
       case screenTypes.QUEST_SOLO:
@@ -30,6 +32,7 @@ class App extends Component {
             initTimer={this.initTimer}
             startGame={this.startGame}
             timer={this.timer}
+            key="solo"
           />
         )
       case screenTypes.QUEST_DOUBLE:
@@ -39,6 +42,7 @@ class App extends Component {
             initTimer={this.initTimer}
             startGame={this.startGame}
             timer={this.timer}
+            key="double"
           />
         )
       case screenTypes.QUEST_TRIPLE:
@@ -48,6 +52,7 @@ class App extends Component {
             initTimer={this.initTimer}
             startGame={this.startGame}
             timer={this.timer}
+            key="triple"
           />
         )
       case screenTypes.FINAL_STATS:
@@ -55,6 +60,7 @@ class App extends Component {
           <FinalStats
             state={this.props.state}
             startAgain={this.props.startAgain}
+            key="final"
           />
         )
       default:
@@ -70,8 +76,11 @@ class App extends Component {
   }
 
   startGame = () => {
+    this.initTimer()
+
     this.timer = setInterval(() => {
       const { timeLeft } = this.props.state.game
+      console.log(timeLeft)
       if (timeLeft) {
         this.props.updateTime(timeLeft - 1)
       } else {
@@ -80,11 +89,26 @@ class App extends Component {
     }, 1000)
   }
 
+  componentWillUnmount() {
+    this.initTimer()
+  }
+
   render() {
+    const { path } = this.props.state.routes
+
     return (
       <main className="central">
         <div className="central__content">
-          <div>{this.renderScreen(this.props.state.routes.path)}</div>
+          <TransitionGroup>
+            <CSSTransition
+              unmountOnExit
+              timeout={300}
+              classNames="fade"
+              key={this.props.state.game.currentQuestIdx}
+            >
+              {this.renderScreen(path)}
+            </CSSTransition>
+          </TransitionGroup>
         </div>
       </main>
     )
