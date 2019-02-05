@@ -1,8 +1,8 @@
 export const MOTTO = `This is not a photo. This is a painting by the Dutch artist Tjalf Sparnaay.`
 
 export const GREETING_TITLE = `The best photorealism artists are going to challenge you!`
-export const GREETING_RULES = `
-The best photorealism artists are going to challenge you!
+
+export const GREETING_RULES = `The best photorealism artists are going to challenge you!
 The rules are simple.
 You should distinguish a painting from a photo and make a choice.
 The task seems trivial, but don't think that everything is that simple.

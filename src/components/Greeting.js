@@ -26,13 +26,11 @@ class Greeting extends Component {
             {/* <h1 className="greeting__asterisk">*</h1> */}
             <div className="greeting__challenge">
               {/*  <h3 className="greeting__title">{strings.GREETING_TITLE}</h3> */}
-              <div>
-                {strings.GREETING_RULES.split('\n').map((line, idx) => (
-                  <p key={idx} className="greeting__new-line">
-                    {line}
-                  </p>
-                ))}
-              </div>
+              {strings.GREETING_RULES.split('\n').map((line, idx) => (
+                <p key={idx} className="greeting__new-line">
+                  {line}
+                </p>
+              ))}
             </div>
             <div
               className="greeting__continue pulse"

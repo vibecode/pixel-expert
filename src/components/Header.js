@@ -11,6 +11,7 @@ class Header extends Component {
 
     return [...livesEmpty, ...livesFull].map((value, idx) => (
       <img
+        className="heart"
         src={value ? heartFull : heartEmpty}
         alt="Life"
         width="32"

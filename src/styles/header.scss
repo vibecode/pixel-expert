@@ -1,4 +1,4 @@
-@import "fonts.scss";
+@import 'fonts.scss';
 
 .header {
   height: 100px;
@@ -29,4 +29,8 @@
   position: absolute;
   top: 20px;
   right: 0;
+}
+
+.heart {
+  margin-right: 3px;
 }

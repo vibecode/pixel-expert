@@ -3,8 +3,7 @@
 
 .greeting {
   position: relative;
-  width: 780px;
-  min-height: 625px;
+  width: 960px;
 
   //transition: background-image 1s ease-in-out;
   background: url('../img/egg_distort.png') no-repeat center;
@@ -36,6 +35,9 @@
 }
 
 .greeting__challenge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0 auto;
   margin-bottom: 25px;
 
@@ -65,7 +67,8 @@
 }
 
 .greeting__new-line {
-  display: inline-block;
+  display: table;
+  // max-width: 720px;
   margin: 1px;
   padding: 0;
   line-height: 1.3;
