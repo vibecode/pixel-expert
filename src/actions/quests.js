@@ -2,7 +2,7 @@ import * as actionTypes from '../constants/actionTypes'
 import { GREETING } from '../constants/screenTypes'
 import { generateQuest } from '../helpers/helpers'
 import screensSchema from '../constants/screensSchema'
-import * as firebase from 'firebase'
+import firebase from '../firebase'
 
 export const fetchData = () => dispatch => {
   //get images urls from firebase
