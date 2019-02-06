@@ -16,7 +16,7 @@ export const fetchData = () => dispatch => {
       //Generate quests schema
       const quests = new Array(10)
         .fill(null)
-        .map(quest => generateQuest(screensSchema, images))
+        .map(() => generateQuest(screensSchema, images))
 
       //collect img urls from generated schema for preloading
       const urls = quests.reduce((acc, quest) => {

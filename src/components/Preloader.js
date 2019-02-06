@@ -1,7 +1,7 @@
 import React from 'react'
-import '../styles/preloader.scss'
+import './Preloader.scss'
 
-export default () => {
+const Preloader = () => {
   return (
     <div className="spinner">
       <div className="dot1" />
@@ -9,3 +9,5 @@ export default () => {
     </div>
   )
 }
+
+export default Preloader

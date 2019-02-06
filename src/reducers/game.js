@@ -63,6 +63,7 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.NEXT_QUEST:
       return {
         ...state,
+        timeLeft: config.TIME_TOTAL,
         currentQuestIdx: state.currentQuestIdx + 1
       }
     case actionTypes.WRONG_ANSWER:
@@ -163,3 +164,6 @@ export default (state = INITIAL_STATE, action) => {
       return state
   }
 }
+
+export const getScreenType = state =>
+  state.quests[state.game.currentQuestIdx].type

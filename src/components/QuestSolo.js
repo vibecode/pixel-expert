@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import Header from './Header'
-import Stats from './Stats'
-import '../styles/game.scss'
+import './Game.scss'
 
 class QuestSolo extends Component {
   constructor(props) {
@@ -13,19 +11,16 @@ class QuestSolo extends Component {
   }
 
   componentDidMount() {
-    console.log('triggered solo')
     this.props.startGame()
   }
 
   componentDidUpdate(prevProps) {
-    const prevOuestIndex = prevProps.state.game.currentQuestIdx
-    const { currentQuestIdx } = this.props.state.game
+    const prevOuestIndex = prevProps.currentQuestIdx
+    const { currentQuestIdx } = this.props
 
     //This is necessary because the component won't remount
     //if a previous screen is the same type as a next screen
     if (currentQuestIdx > prevOuestIndex) {
-      console.log('did update called')
-
       this.props.initTimer()
       this.props.startGame()
 
@@ -40,10 +35,9 @@ class QuestSolo extends Component {
       checked: e.target.value
     })
 
-    clearInterval(this.props.timer)
+    this.props.initTimer()
 
-    const { currentQuestIdx } = this.props.state.game
-    const { quests } = this.props.state
+    const { currentQuestIdx, quests } = this.props
 
     const answer = e.target.value
     const isCorrect = answer === quests[currentQuestIdx].answers[0].type
@@ -52,58 +46,38 @@ class QuestSolo extends Component {
   }
 
   render() {
-    const {
-      livesLeft,
-      livesTotal,
-      timeTotal,
-      timeLeft,
-      results,
-      currentQuestIdx
-    } = this.props.state.game
-    const { quests } = this.props.state
+    const { quests, currentQuestIdx } = this.props
     const { task } = quests[currentQuestIdx]
     const { url, width, height } = quests[currentQuestIdx].answers[0].image
 
     return (
-      <div>
-        <Header
-          livesLeft={livesLeft}
-          livesTotal={livesTotal}
-          timeTotal={timeTotal}
-          timeLeft={timeLeft}
-          startAgain={this.props.startAgain}
-        />
-
-        <div className="game">
-          <p className="game__task">{task}</p>
-          <form className="game__content  game__content--wide">
-            <div className="game__option">
-              <img src={url} alt="Option 1" width={width} height={height} />
-              <label className="game__answer  game__answer--photo">
-                <input
-                  name="question1"
-                  type="radio"
-                  value="photo"
-                  checked={this.state.checked === 'photo'}
-                  onChange={this.handleAnswerClick}
-                />
-                <span>Фото</span>
-              </label>
-              <label className="game__answer  game__answer--wide  game__answer--paint">
-                <input
-                  name="question1"
-                  type="radio"
-                  value="painting"
-                  checked={this.state.checked === 'painting'}
-                  onChange={this.handleAnswerClick}
-                />
-                <span>Рисунок</span>
-              </label>
-            </div>
-          </form>
-        </div>
-
-        <Stats stats={results} />
+      <div className="game">
+        <p className="game__task">{task}</p>
+        <form className="game__content  game__content--wide">
+          <div className="game__option">
+            <img src={url} alt="Option 1" width={width} height={height} />
+            <label className="game__answer  game__answer--photo">
+              <input
+                name="question1"
+                type="radio"
+                value="photo"
+                checked={this.state.checked === 'photo'}
+                onChange={this.handleAnswerClick}
+              />
+              <span>Фото</span>
+            </label>
+            <label className="game__answer  game__answer--wide  game__answer--paint">
+              <input
+                name="question1"
+                type="radio"
+                value="painting"
+                checked={this.state.checked === 'painting'}
+                onChange={this.handleAnswerClick}
+              />
+              <span>Рисунок</span>
+            </label>
+          </div>
+        </form>
       </div>
     )
   }

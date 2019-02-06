@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import HeaderBack from './HeaderBack'
-import '../styles/header.scss'
+import './Header.scss'
 import heartFull from '../img/heart__full.svg'
 import heartEmpty from '../img/heart__empty.svg'
 
-class Header extends Component {
+class Header extends PureComponent {
   renderLives(livesTotal, livesLeft) {
     const livesEmpty = new Array(livesTotal - livesLeft).fill(false)
     const livesFull = new Array(livesLeft).fill(true)

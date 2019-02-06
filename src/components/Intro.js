@@ -1,16 +1,24 @@
 import React, { Component } from 'react'
-import '../styles/intro.scss'
+import './Intro.scss'
 import { MOTTO } from '../constants/strings'
 import Preloader from './Preloader'
 import classNames from 'classnames'
+import { fetchData } from '../actions/quests'
+import { connect } from 'react-redux'
 
 class Intro extends Component {
   componentDidMount() {
     this.props.fetchData()
   }
 
+  componentDidUpdate() {
+    if (this.props.fetchSuccess) {
+      this.props.history.replace('/greeting')
+    }
+  }
+
   render() {
-    const { fetchSuccess, fetchError } = this.props.state.quests
+    const { fetchSuccess, fetchError } = this.props
     return (
       <div
         id="intro"
@@ -38,4 +46,9 @@ class Intro extends Component {
   }
 }
 
-export default Intro
+const mapStateToProps = state => ({ ...state.quests })
+
+export default connect(
+  mapStateToProps,
+  { fetchData }
+)(Intro)

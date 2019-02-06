@@ -1,8 +1,8 @@
 import React from 'react'
-import '../styles/stats.scss'
+import './Stats.scss'
 import v4 from 'uuid/v4'
 
-export default props => {
+const Stats = props => {
   return (
     <div className="stats">
       <ul className="stats">
@@ -13,3 +13,5 @@ export default props => {
     </div>
   )
 }
+
+export default Stats

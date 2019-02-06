@@ -1,4 +1,4 @@
-@import "fonts.scss";
+@import '../fonts.scss';
 
 .result {
   display: flex;
@@ -29,7 +29,6 @@
 .result__extra {
   min-width: 50px;
   text-align: right;
-
 }
 
 .result__total {
@@ -42,6 +41,3 @@
     @include bold-text;
   }
 }
-
-
-

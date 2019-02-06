@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import * as strings from '../constants/strings'
-import '../styles/greeting.scss'
+import './Greeting.scss'
 import logo from '../img/logo_big.svg'
 import arrow from '../img/arrow_right.svg'
-import { RULES } from '../constants/screenTypes'
 
 class Greeting extends Component {
   handleNextClick = () => {
-    this.props.changeScreen(RULES)
+    this.props.history.push('/rules')
   }
 
   render() {

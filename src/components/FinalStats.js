@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import HeaderBack from './HeaderBack'
-import '../styles/result.scss'
+import './FinalStats.scss'
 import { WIN, FAIL } from '../constants/strings'
+import { connect } from 'react-redux'
 
 class FinalStats extends Component {
   getResultsMarkup(results) {
@@ -28,7 +29,7 @@ class FinalStats extends Component {
   }
 
   render() {
-    const { finalStats } = this.props.state
+    const { finalStats } = this.props
     const lastStats = finalStats[finalStats.length - 1]
 
     return (
@@ -101,4 +102,6 @@ class FinalStats extends Component {
   }
 }
 
-export default FinalStats
+const mapStateToProps = state => ({ finalStats: state.finalStats })
+
+export default connect(mapStateToProps)(FinalStats)

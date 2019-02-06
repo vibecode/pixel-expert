@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../styles/rules.scss'
+import './Rules.scss'
 import { RULES } from '../constants/strings'
 import HeaderBack from './HeaderBack'
 import photoIcon from '../img/photo_icon.png'
@@ -16,9 +16,8 @@ class Rules extends Component {
 
   handleGoClick = e => {
     e.preventDefault()
-    const { quests } = this.props
 
-    this.props.changeScreen(quests[0].type)
+    this.props.history.replace('/game')
   }
 
   onInputChange = e => {
@@ -27,14 +26,10 @@ class Rules extends Component {
     })
   }
 
-  handleBackClick = () => {
-    this.props.startAgain()
-  }
-
   render() {
     return (
-      <div>
-        <HeaderBack startAgain={this.handleBackClick} />
+      <>
+        <HeaderBack />
         <div className="rules center-screen">
           <h1 className="rules__title">{RULES.HEADING}</h1>
           <div className="rules__description__block">
@@ -82,7 +77,7 @@ class Rules extends Component {
             </button>
           </form>
         </div>
-      </div>
+      </>
     )
   }
 }
