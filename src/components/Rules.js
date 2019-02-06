@@ -28,9 +28,9 @@ class Rules extends Component {
 
   render() {
     return (
-      <>
+      <div className="rules-container">
         <HeaderBack />
-        <div className="rules center-screen">
+        <div className="rules">
           <h1 className="rules__title">{RULES.HEADING}</h1>
           <div className="rules__description__block">
             <span className="rules__description">
@@ -77,7 +77,7 @@ class Rules extends Component {
             </button>
           </form>
         </div>
-      </>
+      </div>
     )
   }
 }

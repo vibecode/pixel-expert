@@ -1,15 +1,21 @@
 @import '../fonts.scss';
 
+.rules-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .rules {
   text-align: center;
+  margin: auto;
 }
 
 .rules__title {
   display: inline-block;
   @include bold-text;
   font-style: italic;
-  margin-top: 60px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   background-color: #c488ff;
 }
 
@@ -80,6 +86,7 @@
 
   border-width: 0;
   border-radius: 45px;
+  transition: background-color 0.2s ease;
 
   &:enabled:hover {
     background-color: #ff6969;

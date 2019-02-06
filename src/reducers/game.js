@@ -2,6 +2,7 @@ import * as actionTypes from '../constants/actionTypes'
 import { ResultType } from '../constants/questTypes'
 import extraType from '../constants/extraTypes'
 import config from '../constants/config'
+import { get } from 'lodash'
 
 const INITIAL_STATE = {
   currentQuestIdx: 0,
@@ -165,5 +166,7 @@ export default (state = INITIAL_STATE, action) => {
   }
 }
 
-export const getScreenType = state =>
-  state.quests[state.game.currentQuestIdx].type
+export const getScreenType = state => {
+  const idx = get(state, 'game.currentQuestIdx')
+  return get(state, `quests.${idx}.type`)
+}

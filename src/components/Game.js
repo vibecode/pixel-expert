@@ -7,17 +7,13 @@ import QuestDouble from './QuestDouble'
 import QuestTriple from './QuestTriple'
 import Stats from './Stats'
 import { updateTime, onAnswer, startAgain } from '../actions/game'
+import { getScreenType } from '../reducers/game'
+import ReactCSSTransitionReplace from 'react-css-transition-replace'
 
 export class Game extends PureComponent {
   constructor(props) {
     super(props)
     this.timer = null
-  }
-
-  componentDidMount() {
-    if (!this.props.quests.fetchSuccess) {
-      this.props.history.replace('/')
-    }
   }
 
   renderScreen(screenType) {
@@ -33,13 +29,13 @@ export class Game extends PureComponent {
 
     switch (screenType) {
       case screenTypes.QUEST_SOLO:
-        return <QuestSolo {...props} />
+        return <QuestSolo {...props} key="solo" />
       case screenTypes.QUEST_DOUBLE:
-        return <QuestDouble {...props} />
+        return <QuestDouble {...props} key="double" />
       case screenTypes.QUEST_TRIPLE:
-        return <QuestTriple {...props} />
+        return <QuestTriple {...props} key="triple" />
       default:
-        throw new Error(`Unknown screenType: ${screenType}`)
+        return null
     }
   }
 
@@ -70,11 +66,10 @@ export class Game extends PureComponent {
       livesTotal,
       timeLeft,
       timeTotal,
-      currentQuestIdx,
       results,
-      startAgain
+      startAgain,
+      screenType
     } = this.props
-    const screenType = this.props.quests[currentQuestIdx].type
 
     return (
       <div className={'game-container'}>
@@ -85,7 +80,13 @@ export class Game extends PureComponent {
           timeTotal={timeTotal}
           startAgain={startAgain}
         />
-        {this.renderScreen(screenType)}
+        <ReactCSSTransitionReplace
+          transitionName="fade-wait"
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={400}
+        >
+          {this.renderScreen(screenType)}
+        </ReactCSSTransitionReplace>
         <Stats stats={results} />
       </div>
     )
@@ -94,7 +95,8 @@ export class Game extends PureComponent {
 
 const mapStateToProps = state => ({
   ...state.game,
-  quests: state.quests
+  quests: state.quests,
+  screenType: getScreenType(state)
 })
 
 export default connect(

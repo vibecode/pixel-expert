@@ -5,24 +5,30 @@ import Preloader from './Preloader'
 import classNames from 'classnames'
 import { fetchData } from '../actions/quests'
 import { connect } from 'react-redux'
+import { isFetched, fetchError } from '../reducers/quests'
 
 class Intro extends Component {
   componentDidMount() {
     this.props.fetchData()
   }
 
-  componentDidUpdate() {
-    if (this.props.fetchSuccess) {
-      this.props.history.replace('/greeting')
+  componentDidUpdate(prevProps) {
+    const { isFetched } = this.props
+
+    if (isFetched && isFetched !== prevProps.isFetched) {
+      setTimeout(() => {
+        this.props.history.replace('/greeting')
+      }, 1000)
     }
   }
 
   render() {
-    const { fetchSuccess, fetchError } = this.props
+    const { isFetched, fetchError } = this.props
+
     return (
       <div
         id="intro"
-        className={classNames('intro center-screen', { hide: fetchSuccess })}
+        className={classNames('intro center-screen', { hide: isFetched })}
       >
         {fetchError ? (
           <p className="fetch-error">
@@ -46,7 +52,10 @@ class Intro extends Component {
   }
 }
 
-const mapStateToProps = state => ({ ...state.quests })
+const mapStateToProps = state => ({
+  isFetched: isFetched(state),
+  fetchError: fetchError(state)
+})
 
 export default connect(
   mapStateToProps,

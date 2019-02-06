@@ -13,12 +13,16 @@
   min-height: 625px;
 }
 
+.transition-container {
+  width: 960px;
+}
+
 .cross-fade-leave {
   opacity: 1;
 }
 .cross-fade-leave.cross-fade-leave-active {
   opacity: 0;
-  transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in-out;
 }
 
 .cross-fade-enter {
@@ -26,28 +30,9 @@
 }
 .cross-fade-enter.cross-fade-enter-active {
   opacity: 1;
-  transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in-out;
 }
 
 .cross-fade-height {
   transition: height 0.5s ease-in-out;
-}
-
-.fade-enter {
-  opacity: 0.01;
-  transform: scale(0.9) translateY(50%);
-}
-.fade-enter-active {
-  opacity: 1;
-  transform: scale(1) translateY(0%);
-  transition: all 300ms ease-out;
-}
-.fade-exit {
-  opacity: 1;
-  transform: scale(1) translateY(0%);
-}
-.fade-exit-active {
-  opacity: 0.01;
-  transform: scale(0.9) translateY(50%);
-  transition: all 300ms ease-out;
 }

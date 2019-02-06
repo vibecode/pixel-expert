@@ -13,7 +13,7 @@ class Greeting extends Component {
     return (
       <div className="greeting center-screen">
         <div className="greeting__logo">
-          <img src={logo} width="500" height="200" alt="Pixel Expert" />
+          <img src={logo} alt="Pixel Expert" />
         </div>
 
         {/* <h1 className="greeting__asterisk">*</h1> */}

@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import Root from './components/Root'
 import './index.scss'
+import './transitions.css'
 import configureStore from './store/configureStore'
 import registerServiceWorker from './registerServiceWorker'
 

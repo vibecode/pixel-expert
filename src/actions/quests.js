@@ -1,5 +1,4 @@
 import * as actionTypes from '../constants/actionTypes'
-import { GREETING } from '../constants/screenTypes'
 import { generateQuest } from '../helpers/helpers'
 import screensSchema from '../constants/screensSchema'
 import firebase from '../firebase'
@@ -39,12 +38,6 @@ export const fetchData = () => dispatch => {
             type: actionTypes.FETCH_SUCCESS,
             payload: quests
           })
-          setTimeout(() => {
-            dispatch({
-              type: actionTypes.CHANGE_SCREEN,
-              payload: GREETING
-            })
-          }, 1500)
         })
         .catch(() => {
           dispatch(fetchError())

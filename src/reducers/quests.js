@@ -27,3 +27,4 @@ export default (state = INITIAL_STATE, action) => {
 }
 
 export const isFetched = state => state.quests.fetchSuccess
+export const fetchError = state => state.quests.fetchError
