@@ -1,7 +1,13 @@
 @import './colors.scss';
 @import './fonts.scss';
 
-html,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
 body {
   min-height: 100%;
   margin: 0;
@@ -17,7 +23,7 @@ body {
   //   rgba(31, 255, 184, 1) 100%
   // );
   background: linear-gradient(red, transparent),
-    linear-gradient(to top left, lime, transparent),
+    linear-gradient(to top left, rgb(118, 255, 118), transparent),
     linear-gradient(to top right, blue, transparent);
   background-blend-mode: screen;
   @include regular-text;
