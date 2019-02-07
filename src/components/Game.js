@@ -29,11 +29,11 @@ export class Game extends PureComponent {
 
     switch (screenType) {
       case screenTypes.QUEST_SOLO:
-        return <QuestSolo {...props} key="solo" />
+        return <QuestSolo {...props} key={currentQuestIdx} />
       case screenTypes.QUEST_DOUBLE:
-        return <QuestDouble {...props} key="double" />
+        return <QuestDouble {...props} key={currentQuestIdx} />
       case screenTypes.QUEST_TRIPLE:
-        return <QuestTriple {...props} key="triple" />
+        return <QuestTriple {...props} key={currentQuestIdx} />
       default:
         return null
     }
@@ -81,9 +81,10 @@ export class Game extends PureComponent {
           startAgain={startAgain}
         />
         <ReactCSSTransitionReplace
-          transitionName="fade-wait"
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={400}
+          className="game-transition-container"
+          transitionName="roll-up"
+          transitionEnterTimeout={800}
+          transitionLeaveTimeout={800}
         >
           {this.renderScreen(screenType)}
         </ReactCSSTransitionReplace>

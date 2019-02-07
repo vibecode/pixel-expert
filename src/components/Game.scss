@@ -118,3 +118,33 @@
     border-color: #df4e4e;
   }
 }
+
+.game-transition-container {
+  width: 100%;
+}
+
+/* Roll-up transition */
+
+.roll-up-leave {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.roll-up-leave.roll-up-leave-active {
+  transform: translate(-100%, 0);
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.roll-up-enter {
+  transform: translate(-100%, 0);
+  opacity: 0;
+}
+.roll-up-enter.roll-up-enter-active {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.roll-up-height {
+  transition: height 0.8s ease-in-out;
+}

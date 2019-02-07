@@ -37,7 +37,7 @@ class App extends Component {
               <div className="central__content">
                 <ReactCSSTransitionReplace
                   className="transition-container"
-                  transitionName="cross-fade"
+                  transitionName="fade-fast"
                   transitionEnterTimeout={1000}
                   transitionLeaveTimeout={1000}
                 >

@@ -36,3 +36,25 @@
 .cross-fade-height {
   transition: height 0.5s ease-in-out;
 }
+
+/* Fade with width transition */
+
+.fade-fast-leave {
+  opacity: 1;
+}
+.fade-fast-leave.fade-fast-leave-active {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-fast-enter {
+  opacity: 0;
+}
+.fade-fast-enter.fade-fast-enter-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-fast-height {
+  transition: height 0.5s ease-in-out, width 0.5s ease-in-out;
+}
