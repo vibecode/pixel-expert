@@ -9,13 +9,17 @@ body {
 }
 
 body {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 0, 247, 1) 0%,
-    rgba(255, 0, 247, 1) 17%,
-    rgba(119, 0, 255, 1) 49%,
-    rgba(31, 255, 184, 1) 100%
-  );
+  // background: linear-gradient(
+  //   135deg,
+  //   rgba(255, 0, 247, 1) 0%,
+  //   rgba(255, 0, 247, 1) 17%,
+  //   rgba(119, 0, 255, 1) 49%,
+  //   rgba(31, 255, 184, 1) 100%
+  // );
+  background: linear-gradient(red, transparent),
+    linear-gradient(to top left, lime, transparent),
+    linear-gradient(to top right, blue, transparent);
+  background-blend-mode: screen;
   @include regular-text;
   color: $main-font-color;
 }
