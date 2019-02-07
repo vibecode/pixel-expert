@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "license": "MIT",
   "private": false,
-  "homepage": "http://vibecode.github.io/pixel-expert",
+  "engines": {
+    "node": "^11.1.0",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "add": "^2.0.6",
     "classnames": "^2.2.5",
     "eslint-plugin-react": "^7.12.4",
     "express": "^4.16.4",
+    "express-favicon": "^2.0.1",
     "firebase": "^5.8.2",
     "from": "^0.1.7",
     "import": "^0.0.6",
