@@ -6,16 +6,6 @@ class QuestTriple extends Component {
     this.props.startGame()
   }
 
-  componentDidUpdate(prevProps) {
-    const prevOuestIndex = prevProps.currentQuestIdx
-    const { currentQuestIdx } = this.props
-
-    if (currentQuestIdx > prevOuestIndex) {
-      this.props.initTimer()
-      this.props.startGame()
-    }
-  }
-
   handleAnswerClick = e => {
     this.props.initTimer()
 

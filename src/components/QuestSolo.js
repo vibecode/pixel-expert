@@ -14,22 +14,6 @@ class QuestSolo extends Component {
     this.props.startGame()
   }
 
-  componentDidUpdate(prevProps) {
-    const prevOuestIndex = prevProps.currentQuestIdx
-    const { currentQuestIdx } = this.props
-
-    //This is necessary because the component won't remount
-    //if a previous screen is the same type as a next screen
-    if (currentQuestIdx > prevOuestIndex) {
-      this.props.initTimer()
-      this.props.startGame()
-
-      this.setState({
-        checked: ''
-      })
-    }
-  }
-
   handleAnswerClick = e => {
     this.setState({
       checked: e.target.value

@@ -16,25 +16,6 @@ class QuestDouble extends Component {
     this.props.startGame()
   }
 
-  componentDidUpdate(prevProps) {
-    const prevOuestIndex = prevProps.currentQuestIdx
-    const { currentQuestIdx } = this.props
-
-    //This is necessary because the component won't remount
-    //if a previous screen is the same type as a next screen
-    if (currentQuestIdx > prevOuestIndex) {
-      this.props.initTimer()
-      this.props.startGame()
-
-      this.setState({
-        question_1: '',
-        question_2: ''
-      })
-
-      this.answers = new Map()
-    }
-  }
-
   handleAnswerClick = e => {
     this.setState({
       [e.target.name]: e.target.value
