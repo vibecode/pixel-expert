@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import * as strings from '../constants/strings'
 import './Greeting.scss'
-import logo from '../img/logo_big.svg'
-import arrow from '../img/arrow_right.svg'
+
+import { ReactComponent as Logo } from '../img/logo_big.svg'
+import { ReactComponent as Arrow } from '../img/arrow_right.svg'
 
 class Greeting extends Component {
   handleNextClick = () => {
@@ -13,7 +14,7 @@ class Greeting extends Component {
     return (
       <div className="greeting center-screen">
         <div className="greeting__logo">
-          <img src={logo} alt="Pixel Expert" />
+          <Logo />
         </div>
 
         {/* <h1 className="greeting__asterisk">*</h1> */}
@@ -29,7 +30,7 @@ class Greeting extends Component {
           className="greeting__continue pulse"
           onClick={this.handleNextClick}
         >
-          <img className="arrow" src={arrow} alt="Next" />
+          <Arrow />
         </div>
       </div>
     )

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './Intro.scss'
 import { MOTTO } from '../constants/strings'
 import Preloader from './Preloader'
-import classNames from 'classnames'
 import { fetchData } from '../actions/quests'
 import { connect } from 'react-redux'
 import { isFetched, fetchError } from '../reducers/quests'
@@ -23,13 +22,10 @@ class Intro extends Component {
   }
 
   render() {
-    const { isFetched, fetchError } = this.props
+    const { fetchError } = this.props
 
     return (
-      <div
-        id="intro"
-        className={classNames('intro center-screen', { hide: isFetched })}
-      >
+      <div id="intro" className="intro center-screen">
         {fetchError ? (
           <p className="fetch-error">
             <span>

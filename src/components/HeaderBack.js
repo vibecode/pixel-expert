@@ -1,10 +1,10 @@
 import React from 'react'
-import arrowLeft from '../img/arrow_left.svg'
-import logo from '../img/logo_small.svg'
 import './Header.scss'
 import { connect } from 'react-redux'
 import { startAgain } from '../actions/game'
 import { withRouter } from 'react-router-dom'
+import { ReactComponent as ArrowLeft } from '../img/arrow_left.svg'
+import { ReactComponent as Logo } from '../img/logo_small.svg'
 
 const HeaderBack = props => {
   const handleNewStart = () => {
@@ -13,11 +13,11 @@ const HeaderBack = props => {
   }
 
   return (
-    <div className="header__back" onClick={handleNewStart}>
-      <span className="back">
-        <img src={arrowLeft} width="45" height="45" alt="Back" />
-        <img src={logo} width="101" height="44" alt="PixelHunter" />
-      </span>
+    <div className="header-back" onClick={handleNewStart}>
+      <div className="header-back__svg-container">
+        <ArrowLeft className="header-back__arrow" />
+        <Logo className="header-back__logo" />
+      </div>
     </div>
   )
 }

@@ -40,7 +40,7 @@ class Rules extends Component {
                 src={photoIcon}
                 width="24"
                 height="24"
-                alt=""
+                alt="camera icon"
               />
               {RULES.FIRST_LINE_PART_2}
               <img
@@ -48,7 +48,7 @@ class Rules extends Component {
                 src={paintIcon}
                 width="24"
                 height="24"
-                alt=""
+                alt="paint icon"
               />
               <br />
             </span>
